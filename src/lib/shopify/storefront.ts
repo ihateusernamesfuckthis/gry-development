@@ -1,7 +1,9 @@
+import { ShopifyResponse } from "@/types/shopify";
+
 const domain = process.env.SHOPIFY_STORE_DOMAIN!;
 const token = process.env.SHOPIFY_STOREFRONT_API_TOKEN!;
 
-export async function shopifyFetch<T>(query: string, variables: Record<string, any> = {}): Promise<T> {
+export async function shopifyFetch<T>(query: string, variables: Record<string, unknown> = {}): Promise<ShopifyResponse<T>> {
   const res = await fetch(`https://${domain}/api/2024-07/graphql.json`, {
     method: "POST",
     headers: {

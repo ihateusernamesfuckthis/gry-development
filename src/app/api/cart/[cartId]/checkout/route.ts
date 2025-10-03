@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
+import { CartQueryResponse } from "@/types/shopify";
 
 // Query to get checkout URL
 const GET_CHECKOUT_URL_QUERY = `
@@ -19,8 +20,8 @@ export async function GET(
   try {
     const { cartId } = await params;
 
-    const data = await shopifyFetch(GET_CHECKOUT_URL_QUERY, { cartId });
-    const cart = (data as any)?.data?.cart;
+    const data = await shopifyFetch<CartQueryResponse>(GET_CHECKOUT_URL_QUERY, { cartId });
+    const cart = data.data?.cart;
 
     if (!cart || !cart.checkoutUrl) {
       return NextResponse.json(
@@ -31,9 +32,10 @@ export async function GET(
 
     // Return the checkout URL (frontend can redirect user to this)
     return NextResponse.json({ checkoutUrl: cart.checkoutUrl });
-  } catch (err: any) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: err.message },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

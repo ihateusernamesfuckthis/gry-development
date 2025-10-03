@@ -168,6 +168,62 @@ window.location.href = checkoutUrl; // Redirect to Shopify checkout
 
 ---
 
+## TypeScript Type Safety
+
+This project uses proper TypeScript types for all Shopify API interactions to ensure type safety and better developer experience.
+
+### Type Definitions
+
+All Shopify-related types are defined in `src/types/shopify.ts`:
+
+- **Data Models**: `Cart`, `Product`, `ProductVariant`, `CartLine`, `Money`, `Cost`
+- **GraphQL Responses**: `CartCreateResponse`, `CartQueryResponse`, `CartLinesAddResponse`, `CartLinesUpdateResponse`, `ProductsQueryResponse`, `ProductQueryResponse`
+- **Wrapper Types**: `ShopifyResponse<T>` for all GraphQL responses
+
+### Usage in API Routes
+
+All API route handlers use typed responses:
+
+```typescript
+import { shopifyFetch } from "@/lib/shopify/storefront";
+import { CartCreateResponse } from "@/types/shopify";
+
+export async function POST() {
+  try {
+    const data = await shopifyFetch<CartCreateResponse>(CREATE_CART_QUERY);
+    const cart = data.data?.cartCreate?.cart;
+
+    if (!cart) {
+      return NextResponse.json({ error: "Failed to create cart" }, { status: 500 });
+    }
+
+    return NextResponse.json({ cart });
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : "Unknown error" },
+      { status: 500 }
+    );
+  }
+}
+```
+
+### Key TypeScript Practices
+
+1. **No `any` types**: All Shopify API responses use proper typed interfaces
+2. **Type-safe error handling**: Errors are checked with `instanceof Error` before accessing `.message`
+3. **Generic type parameters**: `shopifyFetch<T>()` uses generics for type inference
+4. **ESLint compliance**: The only `eslint-disable` comments are for error handling, which is unavoidable
+
+### Benefits
+
+- **Autocomplete**: Full IDE support for all Shopify response fields
+- **Type checking**: Catches errors at compile time instead of runtime
+- **Documentation**: Types serve as inline documentation for API responses
+- **Refactoring**: Safe renames and changes with TypeScript's refactoring tools
+
+---
+
 ## Environment Variables Required
 
 Create `.env.local` file:

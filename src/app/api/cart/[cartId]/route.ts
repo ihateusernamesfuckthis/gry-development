@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
+import { CartQueryResponse } from "@/types/shopify";
 
 // Query to get cart details
 const GET_CART_QUERY = `
@@ -47,8 +48,8 @@ export async function GET(
   try {
     const { cartId } = await params;
 
-    const data = await shopifyFetch(GET_CART_QUERY, { cartId });
-    const cart = (data as any)?.data?.cart;
+    const data = await shopifyFetch<CartQueryResponse>(GET_CART_QUERY, { cartId });
+    const cart = data.data?.cart;
 
     if (!cart) {
       return NextResponse.json(
@@ -58,9 +59,10 @@ export async function GET(
     }
 
     return NextResponse.json({ cart });
-  } catch (err: any) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: err.message },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

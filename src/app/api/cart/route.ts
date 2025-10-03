@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
+import { CartCreateResponse } from "@/types/shopify";
 
 // Query to create a new cart
 const CREATE_CART_QUERY = `
@@ -39,8 +40,8 @@ const CREATE_CART_QUERY = `
 // POST /api/cart - Creates a new empty cart
 export async function POST() {
   try {
-    const data = await shopifyFetch(CREATE_CART_QUERY);
-    const cart = (data as any)?.data?.cartCreate?.cart;
+    const data = await shopifyFetch<CartCreateResponse>(CREATE_CART_QUERY);
+    const cart = data.data?.cartCreate?.cart;
 
     if (!cart) {
       return NextResponse.json(
@@ -50,9 +51,10 @@ export async function POST() {
     }
 
     return NextResponse.json({ cart });
-  } catch (err: any) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: err.message },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }

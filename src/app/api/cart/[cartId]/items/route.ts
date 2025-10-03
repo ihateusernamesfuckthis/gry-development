@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
+import { CartLinesAddResponse, CartLinesUpdateResponse } from "@/types/shopify";
 
 // Mutation to add items to a cart
 const ADD_TO_CART_QUERY = `
@@ -89,12 +90,12 @@ export async function POST(
       );
     }
 
-    const data = await shopifyFetch(ADD_TO_CART_QUERY, {
+    const data = await shopifyFetch<CartLinesAddResponse>(ADD_TO_CART_QUERY, {
       cartId,
       lines: [{ merchandiseId, quantity }],
     });
 
-    const cart = (data as any)?.data?.cartLinesAdd?.cart;
+    const cart = data.data?.cartLinesAdd?.cart;
 
     if (!cart) {
       return NextResponse.json(
@@ -104,9 +105,10 @@ export async function POST(
     }
 
     return NextResponse.json({ cart });
-  } catch (err: any) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: err.message },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
@@ -130,12 +132,12 @@ export async function PATCH(
       );
     }
 
-    const data = await shopifyFetch(UPDATE_CART_LINES_QUERY, {
+    const data = await shopifyFetch<CartLinesUpdateResponse>(UPDATE_CART_LINES_QUERY, {
       cartId,
       lines: [{ id: lineId, quantity }],
     });
 
-    const cart = (data as any)?.data?.cartLinesUpdate?.cart;
+    const cart = data.data?.cartLinesUpdate?.cart;
 
     if (!cart) {
       return NextResponse.json(
@@ -145,9 +147,10 @@ export async function PATCH(
     }
 
     return NextResponse.json({ cart });
-  } catch (err: any) {
+  } catch (error) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: err.message },
+      { error: error instanceof Error ? error.message : "Unknown error" },
       { status: 500 }
     );
   }
