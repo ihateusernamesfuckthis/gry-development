@@ -8,8 +8,8 @@ export default function TermsAndConditions() {
       </div>
       <div className="ItemDesc size- flex flex-col justify-start items-start">
         <div className="w-[772px] justify-end text-black text-lg font-extrabold font-['Archivo']">
-          Welcome to GRY GRILLZ ("we," "our," or "us"). These Terms and
-          Conditions ("Terms") govern your access to and use of our website,
+          Welcome to GRY GRILLZ (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). These Terms and
+          Conditions (&ldquo;Terms&rdquo;) govern your access to and use of our website,
           grygrillz.com, and any purchases made through it. By using our site or
           placing an order, you agree to be bound by these Terms. If you do not
           agree, please do not use our site.
