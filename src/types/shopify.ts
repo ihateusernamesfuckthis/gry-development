@@ -15,6 +15,11 @@ export interface Product {
   title: string;
   handle: string;
   description?: string;
+  variants?: {
+    edges: Array<{
+      node: ProductVariant;
+    }>;
+  };
 }
 
 export interface ProductVariant {

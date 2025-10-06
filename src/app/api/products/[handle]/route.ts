@@ -10,8 +10,20 @@ const PRODUCT_BY_HANDLE_QUERY = `
       title
       description
       handle
+      variants(first: 10) {
+      edges {
+        node {
+          id
+          title
+          price {
+            amount
+            currencyCode
+          }
+        }
+      }
     }
   }
+}
 `;
 
 // GET /api/products/[handle] - Returns a single product by its handle
