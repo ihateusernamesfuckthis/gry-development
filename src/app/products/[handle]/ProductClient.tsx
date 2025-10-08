@@ -3,47 +3,14 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface ProductVariant {
-  id: string;
-  title: string;
-  price: {
-    amount: string;
-    currencyCode: string;
-  };
-  availableForSale: boolean;
-}
-
-interface ProductImage {
-  url: string;
-  altText?: string;
-  width?: number;
-  height?: number;
-}
-
-interface Product {
-  id: string;
-  title: string;
-  description?: string;
-  handle: string;
-  images?: {
-    edges: Array<{
-      node: ProductImage;
-    }>;
-  };
-  variants?: {
-    edges: Array<{
-      node: ProductVariant;
-    }>;
-  };
-}
+import { Product, ProductVariant as ShopifyProductVariant } from "@/types/shopify";
 
 interface ProductClientProps {
   product: Product;
 }
 
 export default function ProductClient({ product }: ProductClientProps) {
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
+  const [selectedVariant, setSelectedVariant] = useState<ShopifyProductVariant | null>(null);
   const [cartId, setCartId] = useState<string | null>(null);
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
@@ -160,7 +127,7 @@ export default function ProductClient({ product }: ProductClientProps) {
           made by hand, made to order
         </div>
         <div className="000Dkk self-stretch h-12 justify-end text-black text-lg font-extrabold font-['Archivo']">
-          {firstVariant && formatPrice(firstVariant.price.amount, firstVariant.price.currencyCode)}
+          {firstVariant?.price && formatPrice(firstVariant.price.amount, firstVariant.price.currencyCode)}
         </div>
 
         {/* Size selector */}

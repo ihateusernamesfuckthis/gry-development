@@ -3,37 +3,7 @@ import Nav from "@/components/Nav";
 import ProductClient from "./ProductClient";
 import Footer from "@/components/Footer";
 import { shopifyFetch } from "@/lib/shopify/storefront";
-import { ProductQueryResponse } from "@/types/shopify";
-
-interface Product {
-  id: string;
-  title: string;
-  description?: string;
-  handle: string;
-  images?: {
-    edges: Array<{
-      node: {
-        url: string;
-        altText?: string;
-        width?: number;
-        height?: number;
-      };
-    }>;
-  };
-  variants?: {
-    edges: Array<{
-      node: {
-        id: string;
-        title: string;
-        price: {
-          amount: string;
-          currencyCode: string;
-        };
-        availableForSale: boolean;
-      };
-    }>;
-  };
-}
+import { ProductQueryResponse, Product } from "@/types/shopify";
 
 const PRODUCT_BY_HANDLE_QUERY = `
   query ProductByHandle($handle: String!) {
