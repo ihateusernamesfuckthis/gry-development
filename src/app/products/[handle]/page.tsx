@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import ProductClient from "./ProductClient";
 import Footer from "@/components/Footer";
+import { shopifyFetch } from "@/lib/shopify/storefront";
+import { ProductQueryResponse } from "@/types/shopify";
 
 interface Product {
   id: string;
@@ -33,19 +35,44 @@ interface Product {
   };
 }
 
+const PRODUCT_BY_HANDLE_QUERY = `
+  query ProductByHandle($handle: String!) {
+    product(handle: $handle) {
+      id
+      title
+      description
+      handle
+      images(first: 10) {
+        edges {
+          node {
+            url
+            altText
+            width
+            height
+          }
+        }
+      }
+      variants(first: 20) {
+        edges {
+          node {
+            id
+            title
+            price {
+              amount
+              currencyCode
+            }
+            availableForSale
+          }
+        }
+      }
+    }
+  }
+`;
+
 async function getProduct(handle: string): Promise<Product | null> {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/products/${handle}`,
-      { cache: "no-store" }
-    );
-
-    if (!response.ok) {
-      return null;
-    }
-
-    const data = await response.json();
-    return data.product;
+    const data = await shopifyFetch<ProductQueryResponse>(PRODUCT_BY_HANDLE_QUERY, { handle });
+    return data.data?.product || null;
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;
