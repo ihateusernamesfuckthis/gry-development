@@ -16,22 +16,25 @@ export default function RingSection() {
       {/* Ring Grid */}
       <div className="self-stretch inline-flex justify-end items-start gap-8">
         <RingCard
-          name="HUGS"
+          name="RING #1"
           material="925 Sterling Silver"
           price="1.100 DKK"
           imageNumber={1}
+          handle="ring-1"
         />
         <RingCard
-          name="TIDDY"
+          name="RING #2"
           material="925 Sterling Silver"
           price="1.100 DKK"
           imageNumber={1}
+          handle="ring-2"
         />
         <RingCard
-          name="IDK"
+          name="RING #3"
           material="925 Sterling Silver"
           price="1.100 DKK"
           imageNumber={1}
+          handle="ring-3"
         />
       </div>
     </section>

@@ -13,13 +13,32 @@ const GET_CART_QUERY = `
           node {
             id
             quantity
+            cost {
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
             merchandise {
               ... on ProductVariant {
                 id
                 title
+                price {
+                  amount
+                  currencyCode
+                }
                 product {
+                  id
                   title
                   handle
+                  images(first: 1) {
+                    edges {
+                      node {
+                        url
+                        altText
+                      }
+                    }
+                  }
                 }
               }
             }

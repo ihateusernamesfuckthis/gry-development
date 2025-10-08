@@ -10,11 +10,23 @@ export interface Cost {
   subtotalAmount?: Money;
 }
 
+export interface Image {
+  url: string;
+  altText?: string;
+  width?: number;
+  height?: number;
+}
+
 export interface Product {
   id: string;
   title: string;
   handle: string;
   description?: string;
+  images?: {
+    edges: Array<{
+      node: Image;
+    }>;
+  };
   variants?: {
     edges: Array<{
       node: ProductVariant;
@@ -25,13 +37,30 @@ export interface Product {
 export interface ProductVariant {
   id: string;
   title: string;
-  product: Product;
+  price?: {
+    amount: string;
+    currencyCode: string;
+  };
+  availableForSale?: boolean;
+  product?: {
+    id: string;
+    title: string;
+    handle: string;
+    images?: {
+      edges: Array<{
+        node: Image;
+      }>;
+    };
+  };
 }
 
 export interface CartLine {
   id: string;
   quantity: number;
   merchandise: ProductVariant;
+  cost?: {
+    totalAmount: Money;
+  };
 }
 
 export interface Cart {
