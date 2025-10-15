@@ -6,7 +6,7 @@ export default function GrillzSection() {
     <section className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}
       <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5 sticky top-0 z-10">
-        <div className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
+        <div id="grillz" className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
           GRILLZ
         </div>
       </div>
