@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import TShirtSection from "@/components/TShirtSection";
 
 export default function ArchivePage() {
   return (
@@ -9,6 +10,7 @@ export default function ArchivePage() {
         <div className="self-stretch pl-0 pr-14 inline-flex flex-col justify-start items-center gap-24">
           {/* Content will go here */}
         </div>
+        
         <Footer />
       </div>
     </main>

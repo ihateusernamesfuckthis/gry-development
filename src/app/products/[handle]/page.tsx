@@ -70,6 +70,6 @@ export default async function ProductPage({
         </div>
         <Footer />
       </div>
-    </main>
+    </main> 
   );
 }

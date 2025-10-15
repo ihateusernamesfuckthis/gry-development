@@ -65,6 +65,12 @@ export default function Nav() {
             </div>
           </Link>
 
+          <Link href="/rings" className="w-16 h-5 relative">
+            <div className="left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']">
+              APPAREL
+            </div>
+          </Link>
+
           <Link href="/archive" className="w-24 h-5 relative">
             <div className="left-0 top-0 absolute justify-start text-black text-lg font-[600] font-['Archivo']">
               ARCHIVE
