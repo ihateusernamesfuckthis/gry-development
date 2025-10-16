@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [hasCartItems, setHasCartItems] = useState(false);
+  const pathname = usePathname();
+  const isArchivePage = pathname === "/archive";
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
@@ -130,6 +133,27 @@ export default function Nav() {
               ARCHIVE
             </div>
           </Link>
+
+          {/* Archive Subcategories - Only show on archive page */}
+          {isArchivePage && (
+            <div className="pl-6 flex flex-col gap-1">
+              <Link href="/archive#find-your-smile" className="w-auto h-5 relative">
+                <div className="left-0 top-0 absolute justify-start text-black text-base font-[800] font-['Archivo'] whitespace-nowrap">
+                  FIND YOUR SMILE
+                </div>
+              </Link>
+              <Link href="/archive#events" className="w-auto h-5 relative">
+                <div className="left-0 top-0 absolute justify-start text-black text-base font-[800] font-['Archivo'] whitespace-nowrap">
+                  EVENTS
+                </div>
+              </Link>
+              <Link href="/archive#behind-the-scenes" className="w-auto h-5 relative">
+                <div className="left-0 top-0 absolute justify-start text-black text-base font-[800] font-['Archivo'] whitespace-nowrap">
+                  BEHIND THE SCENES
+                </div>
+              </Link>
+            </div>
+          )}
 
           <Link href="/cart" className="w-14 h-5 relative">
             <div

@@ -6,7 +6,7 @@ export default function TShirtSection() {
     <section id="apparel" className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}
       <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5 sticky top-0 z-10">
-        <div className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
+        <div className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px] whitespace-nowrap">
           TIDDY BEAR
         </div>
         <div className="w-60 h-6 justify-end text-black text-sm font-[800] font-['Archivo']">

@@ -9,6 +9,9 @@ export default function GrillzSection() {
         <div id="grillz" className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
           GRILLZ
         </div>
+        <div className="w-60 h-6 justify-end text-black text-sm font-[800] font-['Archivo']">
+          item description
+        </div>
       </div>
 
       {/* Unified Canvas - All Content in One Container */}
@@ -25,7 +28,7 @@ export default function GrillzSection() {
         </div>
 
         {/* Image 2 - Top Right Area */}
-        <div className="absolute right-[10%] top-[2%] w-[35%] hover:scale-105 transition-transform">
+        <div className="absolute right-[5%] top-0 w-[35%] hover:scale-105 transition-transform">
           <Image
             src="/grillzsection/GrillTransparent4.png"
             alt="Grillz Design 2"
@@ -47,8 +50,8 @@ export default function GrillzSection() {
         </div>
 
         {/* CTA Text - Left Center */}
-        <div className="absolute left-[5%] top-[45%] flex flex-col gap-2">
-          <h2 className="text-black text-7xl font-[900] font-['Archivo'] uppercase leading-tight whitespace-nowrap">
+        <div className="absolute left-0 top-[45%] flex flex-col gap-2">
+          <h2 className="text-black text-7xl font-[800] font-['Archivo'] uppercase leading-tight whitespace-nowrap">
             FIND YOUR SMILE
           </h2>
           <Link
@@ -71,7 +74,7 @@ export default function GrillzSection() {
         </div>
 
         {/* Image 5 - Bottom Right */}
-        <div className="absolute right-[8%] bottom-[10%] w-[32%] z-20 hover:scale-105 transition-transform">
+        <div className="absolute right-[8%] bottom-[10%] w-[32%] hover:scale-105 transition-transform">
           <Image
             src="/grillzsection/GrillTransparent6.png"
             alt="Grillz Design 5"
