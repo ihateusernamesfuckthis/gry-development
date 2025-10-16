@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { usePathname } from "next/navigation";
 
 export default function Nav() {
   const [hasCartItems, setHasCartItems] = useState(false);
