@@ -8,6 +8,7 @@ export default function Nav() {
   const [hasCartItems, setHasCartItems] = useState(false);
   const pathname = usePathname();
   const isArchivePage = pathname === "/archive";
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const checkCart = async () => {
@@ -45,6 +46,58 @@ export default function Nav() {
     };
   }, []);
 
+  // Scroll-spy: use scroll + rAF to pick the section closest to a fixed top offset (stable, non-jittery)
+  useEffect(() => {
+    const ids = ["grillz", "rings", "apparel", "archive"];
+    const offset = 120; // pixels from top to consider "active" — tweak for your layout/sticky headers
+    let ticking = false;
+
+    const updateActive = () => {
+      let closestId: string | null = null;
+      let minDist = Infinity;
+
+      ids.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const dist = Math.abs(rect.top - offset);
+        if (dist < minDist) {
+          minDist = dist;
+          closestId = id;
+        }
+      });
+
+      if (closestId) {
+        setActiveSection((prev) => (prev !== closestId ? closestId : prev));
+      }
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        updateActive();
+        ticking = false;
+      });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    // run once on mount to set initial state
+    onScroll();
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [usePathname() /* note: pass pathname from hook instead of calling here if linter complains */]);
+
+  const linkClass = (id: string, base = "left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo']") =>
+    `${base} transition-all duration-300 ${
+      activeSection === id ? "text-yellow-400" : "text-black scale-100"
+    }`;
+
   return (
     <nav className="w-64 h-screen pt-4 sticky top-0 inline-flex flex-col justify-start items-start">
       {/* Logo */}
@@ -57,25 +110,25 @@ export default function Nav() {
         {/* Menu */}
         <div className="flex flex-col justify-center items-start gap-1 flex-1">
           <Link href="/grillz" className="w-20 h-5 relative">
-            <div className="left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']">
+            <div className={linkClass("grillz", "left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']")}>
               GRILLZ
             </div>
           </Link>
 
           <Link href="/rings" className="w-16 h-5 relative">
-            <div className="left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']">
+            <div className={linkClass("rings", "left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']")}>
               RINGS
             </div>
           </Link>
 
           <Link href="/rings" className="w-16 h-5 relative">
-            <div className="left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']">
+            <div className={linkClass("apparel", "left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']")}>
               APPAREL
             </div>
           </Link>
 
           <Link href="/archive" className="w-24 h-5 relative">
-            <div className="left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']">
+            <div className={linkClass("archive", "left-0 top-0 absolute justify-start text-black text-lg font-[600] font-['Archivo']")}>
               ARCHIVE
             </div>
           </Link>
@@ -104,9 +157,7 @@ export default function Nav() {
           <Link href="/cart" className="w-14 h-5 relative">
             <div
               className={`left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo'] transition-all duration-300 ${
-                hasCartItems
-                  ? "text-yellow-500 scale-110"
-                  : "text-black scale-100"
+                hasCartItems ? "text-yellow-500 scale-110" : "text-black scale-100"
               }`}
             >
               CART
