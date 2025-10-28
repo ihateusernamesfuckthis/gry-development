@@ -26,14 +26,14 @@ export default function RingSection() {
           name="RING #2"
           material="925 Sterling Silver"
           price="1.100 DKK"
-          imageNumber={1}
+          imageNumber={2}
           handle="ring-2"
         />
         <RingCard
           name="RING #3"
           material="925 Sterling Silver"
           price="1.100 DKK"
-          imageNumber={1}
+          imageNumber={3}
           handle="ring-3"
         />
       </div>

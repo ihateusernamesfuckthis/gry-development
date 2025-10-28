@@ -9,7 +9,7 @@ export default function GrillzSection() {
         <div id="grillz" className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
           GRILLZ
         </div>
-        <div className="w-60 h-6 justify-end text-black text-sm font-[800] font-['Archivo']">
+        <div className="w-60 h-6 justify-end text-blue text-sm font-[800] font-['Archivo']">
           item description
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function TShirtSection() {
           {/* Image with hover effect */}
           <div className="flex-1 relative group cursor-pointer">
             <Image
-              src="/tshirtsection/tshirt1.png"
+              src="/tshirtsection/tshirt1.avif"
               alt="TIDDY BEAR T-Shirt"
               width={751}
               height={884}
