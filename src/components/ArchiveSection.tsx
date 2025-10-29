@@ -20,7 +20,7 @@ export default function ArchiveSection() {
         <Link href="/archive" className="flex-1 inline-flex flex-col justify-start items-start gap-2 group cursor-pointer">
           <div className="relative w-full">
             <Image
-              src="/archivesection/archive1.png"
+              src="/archivesection/find.avif"
               alt="Find Your Smile"
               width={360}
               height={527}
@@ -38,7 +38,7 @@ export default function ArchiveSection() {
         <Link href="/archive" className="flex-1 inline-flex flex-col justify-start items-start gap-2 group cursor-pointer">
           <div className="relative w-full">
             <Image
-              src="/archivesection/archive1.png"
+              src="/archivesection/BTS.avif"
               alt="Behind The Scenes"
               width={360}
               height={527}
@@ -56,7 +56,7 @@ export default function ArchiveSection() {
         <Link href="/archive" className="flex-1 inline-flex flex-col justify-start items-start gap-2 group cursor-pointer">
           <div className="relative w-full">
             <Image
-              src="/archivesection/archive1.png"
+              src="/archivesection/events.avif"
               alt="Events"
               width={360}
               height={527}

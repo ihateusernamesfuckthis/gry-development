@@ -15,10 +15,10 @@ export default function RingCard({ name, material, price, imageNumber, handle }:
       {/* Image with hover effect */}
       <div className="self-stretch flex-1 relative group cursor-pointer">
         <Image
-          src={`/ringsection/ring${imageNumber}.png`}
+          src={`/ringsection/ring${imageNumber}.avif`}
           alt={name}
           fill
-          className="object-contain"
+          className="object-cover"
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/10 transition-colors" />

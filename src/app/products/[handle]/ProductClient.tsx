@@ -102,7 +102,7 @@ export default function ProductClient({ product }: ProductClientProps) {
         </div>
 
         {/* Images */}
-        {images.slice(0, 3).map((image, index) => (
+        {images.map((image, index) => (
           <div
             key={index}
             className="Hoverimagerings self-stretch h-[800px] relative"

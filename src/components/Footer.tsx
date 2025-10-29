@@ -4,10 +4,7 @@ export default function Footer() {
   return (
     <footer className="w-full h-[63px] flex items-end justify-between text-sm text-black font-['Archivo']">
       {/* Left side - Brand */}
-      <div className="flex-1">
-        <span className="font-[800]">GRY GRILLZ ⚡ </span>
-        <span>© 2025</span>
-      </div>
+    
 
       {/* Right side - Links */}
       <div className="flex-1 flex items-center justify-end gap-8 text-right">

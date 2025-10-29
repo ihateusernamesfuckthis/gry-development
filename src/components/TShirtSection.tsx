@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function TShirtSection() {
+interface tshirtProps {
+  name: string;
+  material: string;
+  price: string;
+  imageNumber: number;
+  handle: string;
+}
+
+export default function TShirtSection({ name, material, price, imageNumber, handle }: tshirtProps) {
   return (
     <section id="apparel" className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}
@@ -16,12 +24,12 @@ export default function TShirtSection() {
 
       {/* T-Shirt Display */}
       <div className="self-stretch inline-flex justify-start items-start gap-8">
-        <Link href="/tshirt" className="flex-1 flex justify-center items-end gap-8">
+        <Link href={`/products/${handle}`} className="flex-1 flex justify-center items-end gap-8">
           {/* Image with hover effect */}
           <div className="flex-1 relative group cursor-pointer">
             <Image
-              src="/tshirtsection/tshirt1.png"
-              alt="TIDDY BEAR T-Shirt"
+              src={`/tshirtsection/tshirt${imageNumber}.avif`}
+              alt={name}
               width={751}
               height={884}
               className="w-full h-auto object-contain"
@@ -34,13 +42,13 @@ export default function TShirtSection() {
           <div className="pb-32 flex justify-start items-start gap-20">
             <div className="w-96 h-20 inline-flex flex-col justify-start items-start">
               <div className="self-stretch h-4 justify-start text-black text-base font-[800] font-['Archivo']">
-                T-SHIRT
+                {name}
               </div>
               <div className="self-stretch h-4 justify-start text-black text-base font-[800] font-['Archivo']">
-                Item Attributes
+                {material}
               </div>
               <div className="self-stretch h-6 justify-end text-black text-base font-normal font-['Archivo']">
-                1.000 DKK
+                {price}
               </div>
             </div>
           </div>
