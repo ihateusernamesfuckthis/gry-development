@@ -18,7 +18,7 @@ export default function RingCard({ name, material, price, imageNumber, handle }:
           src={`/ringsection/ring${imageNumber}.avif`}
           alt={name}
           fill
-          className="object-contain"
+          className="object-cover"
         />
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-gray-900/0 group-hover:bg-gray-900/10 transition-colors" />

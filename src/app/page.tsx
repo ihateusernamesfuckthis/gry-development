@@ -18,7 +18,13 @@ export default function Home() {
         <div className="flex-1 flex flex-col gap-12">
           <GrillzSection />
           <RingSection />
-          <TShirtSection />
+          <TShirtSection
+            name="TIDDY BEAR TEE"
+            material="100% Cotton"
+            price="1.000 DKK"
+            imageNumber={1}
+            handle="tiddy-bear-tee"
+          />
           <ArchiveSection />
           <Footer />
         </div>

@@ -9,7 +9,6 @@ export default function Nav() {
   const pathname = usePathname();
   const isArchivePage = pathname === "/archive";
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [gryOpacity, setGryOpacity] = useState(0);
 
   useEffect(() => {
     const checkCart = async () => {
@@ -94,24 +93,6 @@ export default function Nav() {
     };
   }, [usePathname() /* note: pass pathname from hook instead of calling here if linter complains */]);
 
-  // GRY instant switch (inverse of LandingHero)
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const switchPoint = window.innerHeight * 0.1; // Switch at 80% of hero height
-
-      if (scrollY < switchPoint) {
-        setGryOpacity(0);
-      } else {
-        setGryOpacity(1);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Run once on mount
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const linkClass = (id: string, base = "left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo']") =>
     `${base} transition-all duration-100 ${
       activeSection === id ? "text-yellow-400" : "text-black scale-100"
@@ -122,8 +103,7 @@ export default function Nav() {
       {/* Logo */}
       <Link href="/" className="justify-end hover:opacity-70 transition-opacity">
         <div
-          className="text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px] transition-opacity duration-300"
-          style={{ opacity: gryOpacity }}
+          className="text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]"
         >
           GRY
         </div>
@@ -139,13 +119,31 @@ export default function Nav() {
             </div>
           </Link>
 
-          <Link href="/rings" className="w-16 h-5 relative">
+          <Link
+            href="/#rings"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                document.getElementById("rings")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="w-16 h-5 relative"
+          >
             <div className={linkClass("rings", "left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']")}>
               RINGS
             </div>
           </Link>
 
-          <Link href="/rings" className="w-16 h-5 relative">
+          <Link
+            href="/#apparel"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                document.getElementById("apparel")?.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="w-16 h-5 relative"
+          >
             <div className={linkClass("apparel", "left-0 top-0 absolute justify-start text-black text-lg font-[800] font-['Archivo']")}>
               APPAREL
             </div>

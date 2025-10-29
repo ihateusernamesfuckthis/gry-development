@@ -214,11 +214,17 @@ export default function GrillzPage() {
                 {/* BANNER 1 - HEART */}
                 <div
                   data-layer="BANNER1"
-                  className="Banner1 w-[1143px] h-96 relative bg-gray-800"
+                  className="Banner1 w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
                 >
+                  <Image
+                    src="/grillzPage/grillzBanner/heart.avif"
+                    alt="Heart Grillz"
+                    fill
+                    className="object-cover"
+                  />
                   <div
                     data-layer="HEART"
-                    className="Heart w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px]"
+                    className="Heart w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px] z-10"
                   >
                     HEART
                   </div>
@@ -227,11 +233,17 @@ export default function GrillzPage() {
                 {/* BANNER 2 - FANG */}
                 <div
                   data-layer="BANNER2"
-                  className="Banner2 w-[1143px] h-96 relative bg-gray-800"
+                  className="Banner2 w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
                 >
+                  <Image
+                    src="/grillzPage/grillzBanner/fang.avif"
+                    alt="Fang Grillz"
+                    fill
+                    className="object-cover"
+                  />
                   <div
                     data-layer="FANG"
-                    className="Fang w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px]"
+                    className="Fang w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px] z-10"
                   >
                     FANG
                   </div>
@@ -240,11 +252,17 @@ export default function GrillzPage() {
                 {/* BANNER 3 - PLAIN */}
                 <div
                   data-layer="BANNER3"
-                  className="Banner3 w-[1143px] h-96 relative bg-gray-800"
+                  className="Banner3 w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
                 >
+                  <Image
+                    src="/grillzPage/grillzBanner/plain.avif"
+                    alt="Plain Grillz"
+                    fill
+                    className="object-cover"
+                  />
                   <div
                     data-layer="PLAIN"
-                    className="Plain w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px]"
+                    className="Plain w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px] z-10"
                   >
                     PLAIN
                   </div>
@@ -253,11 +271,17 @@ export default function GrillzPage() {
                 {/* BANNER 4 - ORGANIC */}
                 <div
                   data-layer="BANNER4"
-                  className="Banner4 w-[1143px] h-96 relative bg-gray-800"
+                  className="Banner4 w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
                 >
+                  <Image
+                    src="/grillzPage/grillzBanner/organic.avif"
+                    alt="Organic Grillz"
+                    fill
+                    className="object-cover"
+                  />
                   <div
                     data-layer="ORGANIC"
-                    className="Organic w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px]"
+                    className="Organic w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px] z-10"
                   >
                     ORGANIC
                   </div>
@@ -266,11 +290,17 @@ export default function GrillzPage() {
                 {/* BANNER 5 - OPEN FACE */}
                 <div
                   data-layer="BANNER5"
-                  className="Banner5 w-[1143px] h-96 relative bg-gray-800"
+                  className="Banner5 w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
                 >
+                  <Image
+                    src="/grillzPage/grillzBanner/openface.avif"
+                    alt="Open Face Grillz"
+                    fill
+                    className="object-cover"
+                  />
                   <div
                     data-layer="OPEN FACE"
-                    className="OpenFace w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px]"
+                    className="OpenFace w-[1143px] left-[40px] top-[281px] absolute justify-start text-white text-8xl font-black font-['Archivo'] uppercase leading-[80px] z-10"
                   >
                     OPEN FACE
                   </div>
