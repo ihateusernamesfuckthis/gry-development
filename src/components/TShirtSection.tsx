@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface tshirtProps {
+interface TShirtSectionProps {
   name: string;
   material: string;
   price: string;
@@ -9,7 +9,7 @@ interface tshirtProps {
   handle: string;
 }
 
-export default function TShirtSection({ name, material, price, imageNumber, handle }: tshirtProps) {
+export default function TShirtSection({ name, material, price, imageNumber, handle }: TShirtSectionProps) {
   return (
     <section id="apparel" className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}

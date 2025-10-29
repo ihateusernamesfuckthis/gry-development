@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
 import { CartLinesAddResponse, CartLinesUpdateResponse } from "@/types/shopify";
+import { getErrorMessage } from "@/lib/utils/errors";
 
 // Mutation to add items to a cart
 const ADD_TO_CART_QUERY = `
@@ -106,9 +107,8 @@ export async function POST(
 
     return NextResponse.json({ cart });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }
@@ -148,9 +148,8 @@ export async function PATCH(
 
     return NextResponse.json({ cart });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }

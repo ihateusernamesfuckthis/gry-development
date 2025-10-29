@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
 import { ProductQueryResponse } from "@/types/shopify";
+import { getErrorMessage } from "@/lib/utils/errors";
 
 // Query to get a single product by handle
 const PRODUCT_BY_HANDLE_QUERY = `
@@ -57,9 +58,8 @@ export async function GET(
 
     return NextResponse.json({ product });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }

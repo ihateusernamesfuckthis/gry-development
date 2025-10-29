@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { CART_POLL_INTERVAL, SESSION_KEYS, NAV_SCROLL_OFFSET } from "@/constants";
+import { logError } from "@/lib/utils/errors";
 
 export default function Nav() {
   const [hasCartItems, setHasCartItems] = useState(false);
@@ -12,7 +14,7 @@ export default function Nav() {
 
   useEffect(() => {
     const checkCart = async () => {
-      const cartId = localStorage.getItem("cartId");
+      const cartId = localStorage.getItem(SESSION_KEYS.CART_ID);
       if (!cartId) {
         setHasCartItems(false);
         return;
@@ -28,7 +30,7 @@ export default function Nav() {
           setHasCartItems(false);
         }
       } catch (error) {
-        console.error("Error checking cart:", error);
+        logError("Error checking cart:", error);
         setHasCartItems(false);
       }
     };
@@ -37,7 +39,7 @@ export default function Nav() {
     checkCart();
 
     // Check cart periodically and on window focus
-    const interval = setInterval(checkCart, 3000);
+    const interval = setInterval(checkCart, CART_POLL_INTERVAL);
     window.addEventListener("focus", checkCart);
 
     return () => {
@@ -49,7 +51,6 @@ export default function Nav() {
   // Scroll-spy: use scroll + rAF to pick the section closest to a fixed top offset (stable, non-jittery)
   useEffect(() => {
     const ids = ["grillz", "rings", "apparel", "archive"];
-    const offset = 10; // pixels from top to consider "active" — tweak for your layout/sticky headers
     let ticking = false;
 
     const updateActive = () => {
@@ -60,7 +61,7 @@ export default function Nav() {
         const el = document.getElementById(id);
         if (!el) return;
         const rect = el.getBoundingClientRect();
-        const dist = Math.abs(rect.top - offset);
+        const dist = Math.abs(rect.top - NAV_SCROLL_OFFSET);
         if (dist < minDist) {
           minDist = dist;
           closestId = id;

@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
 import { ProductsQueryResponse } from "@/types/shopify";
+import { getErrorMessage } from "@/lib/utils/errors";
 
 // Query to get all products
 const PRODUCTS_QUERY = `
@@ -26,9 +27,8 @@ export async function GET() {
 
     return NextResponse.json({ products });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }

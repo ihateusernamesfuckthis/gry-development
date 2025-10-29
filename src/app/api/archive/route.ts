@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
 import { GET_ARCHIVE_METAOBJECTS } from "@/lib/shopify/queries/archive";
+import { getErrorMessage, logDebug } from "@/lib/utils/errors";
 
 interface MediaImage {
   id: string;
@@ -49,8 +50,8 @@ export async function GET() {
       );
     }
 
-    // Debug: Log the raw response
-    console.log("Raw Shopify response:", JSON.stringify(response, null, 2));
+    // Debug: Log the raw response in development only
+    logDebug("Raw Shopify response:", JSON.stringify(response, null, 2));
 
     // Transform the data to extract images
     const transformMetaobject = (metaobject: Metaobject | null, fieldKey: string) => {
@@ -80,12 +81,8 @@ export async function GET() {
 
     return NextResponse.json(archiveData);
   } catch (error) {
-    console.error("Error fetching archive metaobjects:", error);
     return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "Failed to fetch archive data",
-      },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }
