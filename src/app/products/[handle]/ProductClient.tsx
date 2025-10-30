@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Product, ProductVariant as ShopifyProductVariant } from "@/types/shopify";
+import { useCartId } from "@/hooks/useCartId";
+import { formatPrice } from "@/lib/utils/formatPrice";
+import { logError } from "@/lib/utils/errors";
+import { ADDED_TO_CART_DISPLAY_TIME } from "@/constants";
 
 interface ProductClientProps {
   product: Product;
@@ -11,27 +15,23 @@ interface ProductClientProps {
 
 export default function ProductClient({ product }: ProductClientProps) {
   const [selectedVariant, setSelectedVariant] = useState<ShopifyProductVariant | null>(null);
-  const [cartId, setCartId] = useState<string | null>(null);
+  const { cartId, setCartId } = useCartId();
   const [isAddingToCart, setIsAddingToCart] = useState(false);
   const [addedToCart, setAddedToCart] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const variants = product.variants?.edges.map((edge) => edge.node) || [];
   const images = product.images?.edges.map((edge) => edge.node) || [];
   const firstVariant = variants[0];
 
-  useEffect(() => {
-    // Load cart ID from localStorage
-    const storedCartId = localStorage.getItem("cartId");
-    setCartId(storedCartId);
-  }, []);
-
   const handleAddToCart = async () => {
     if (!selectedVariant) {
-      alert("Please select a size");
+      setError("Please select a size");
       return;
     }
 
     setIsAddingToCart(true);
+    setError(null);
 
     try {
       // Create cart if it doesn't exist
@@ -40,13 +40,12 @@ export default function ProductClient({ product }: ProductClientProps) {
         const cartResponse = await fetch("/api/cart", { method: "POST" });
         const { cart } = await cartResponse.json();
         currentCartId = cart.id;
-        localStorage.setItem("cartId", cart.id);
         setCartId(cart.id);
       }
 
       // Type guard to ensure currentCartId is not null
       if (!currentCartId) {
-        alert("Failed to create cart");
+        setError("Failed to create cart");
         return;
       }
 
@@ -65,29 +64,16 @@ export default function ProductClient({ product }: ProductClientProps) {
 
       if (response.ok) {
         setAddedToCart(true);
-        setTimeout(() => setAddedToCart(false), 3000);
+        setTimeout(() => setAddedToCart(false), ADDED_TO_CART_DISPLAY_TIME);
       } else {
-        alert("Failed to add to cart");
+        setError("Failed to add to cart");
       }
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-      alert("Failed to add to cart");
+    } catch (err) {
+      logError("Error adding to cart:", err);
+      setError("Failed to add to cart");
     } finally {
       setIsAddingToCart(false);
     }
-  };
-
-  const formatPrice = (amount: string, currency: string) => {
-    const numAmount = parseFloat(amount);
-    const formatted = numAmount.toLocaleString("da-DK", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-
-    if (currency === "DKK") {
-      return `${formatted} DKK`;
-    }
-    return `${formatted} ${currency}`;
   };
 
   return (
@@ -102,9 +88,9 @@ export default function ProductClient({ product }: ProductClientProps) {
         </div>
 
         {/* Images */}
-        {images.map((image, index) => (
+        {images.map((image) => (
           <div
-            key={index}
+            key={image.url}
             className="Hoverimagerings self-stretch h-[800px] relative"
           >
             <div className="Rectangle2 w-[640px] h-[800px] left-0 top-0 absolute bg-stone-50" />
@@ -153,6 +139,13 @@ export default function ProductClient({ product }: ProductClientProps) {
             ))}
           </div>
         </div>
+
+        {/* Error message */}
+        {error && (
+          <div className="w-full mt-4 p-3 bg-red-50 border border-red-200 rounded">
+            <p className="text-red-600 text-sm font-['Archivo']">{error}</p>
+          </div>
+        )}
 
         {/* Cart buttons */}
         <div className="Cartbuttons inline-flex justify-center items-center gap-6 mt-6">

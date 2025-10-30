@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { SCROLL_THRESHOLD_PERCENTAGE, FADE_OUT_DURATION, SESSION_KEYS } from "@/constants";
 
 export default function LandingHero() {
   const [isVisible, setIsVisible] = useState(true);
@@ -10,7 +11,7 @@ export default function LandingHero() {
 
   useEffect(() => {
     // Check if user has seen the hero in this session
-    const hasSeenHero = sessionStorage.getItem("hasSeenHero");
+    const hasSeenHero = sessionStorage.getItem(SESSION_KEYS.HAS_SEEN_HERO);
     if (hasSeenHero === "true") {
       setIsVisible(false);
       return;
@@ -18,7 +19,7 @@ export default function LandingHero() {
 
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const scrollThreshold = window.innerHeight * 0.15; // Trigger at 15% scroll
+      const scrollThreshold = window.innerHeight * SCROLL_THRESHOLD_PERCENTAGE;
 
       if (scrollY > scrollThreshold && !hasScrolled) {
         setHasScrolled(true);
@@ -28,8 +29,8 @@ export default function LandingHero() {
         // After transition, remove from DOM and save to session
         setTimeout(() => {
           setIsVisible(false);
-          sessionStorage.setItem("hasSeenHero", "true");
-        }, 600); // Match transition duration
+          sessionStorage.setItem(SESSION_KEYS.HAS_SEEN_HERO, "true");
+        }, FADE_OUT_DURATION);
       }
     };
 

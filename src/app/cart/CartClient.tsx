@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useCartId } from "@/hooks/useCartId";
+import { formatPrice } from "@/lib/utils/formatPrice";
+import { logError } from "@/lib/utils/errors";
 
 interface Money {
   amount: string;
@@ -56,10 +59,10 @@ export default function CartClient() {
   const [cart, setCart] = useState<Cart | null>(null);
   const [loading, setLoading] = useState(true);
   const [updatingLineId, setUpdatingLineId] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const { cartId } = useCartId();
 
   const fetchCart = async () => {
-    const cartId = localStorage.getItem("cartId");
-
     if (!cartId) {
       setLoading(false);
       return;
@@ -71,8 +74,8 @@ export default function CartClient() {
         const { cart: cartData } = await response.json();
         setCart(cartData);
       }
-    } catch (error) {
-      console.error("Error fetching cart:", error);
+    } catch (err) {
+      logError("Error fetching cart:", err);
     } finally {
       setLoading(false);
     }
@@ -80,13 +83,13 @@ export default function CartClient() {
 
   useEffect(() => {
     fetchCart();
-  }, []);
+  }, [cartId]);
 
   const updateQuantity = async (lineId: string, newQuantity: number) => {
-    const cartId = localStorage.getItem("cartId");
     if (!cartId) return;
 
     setUpdatingLineId(lineId);
+    setError(null);
 
     try {
       const response = await fetch(
@@ -105,11 +108,11 @@ export default function CartClient() {
         const { cart: updatedCart } = await response.json();
         setCart(updatedCart);
       } else {
-        alert("Failed to update quantity");
+        setError("Failed to update quantity");
       }
-    } catch (error) {
-      console.error("Error updating quantity:", error);
-      alert("Failed to update quantity");
+    } catch (err) {
+      logError("Error updating quantity:", err);
+      setError("Failed to update quantity");
     } finally {
       setUpdatingLineId(null);
     }
@@ -120,8 +123,9 @@ export default function CartClient() {
   };
 
   const proceedToCheckout = async () => {
-    const cartId = localStorage.getItem("cartId");
     if (!cartId) return;
+
+    setError(null);
 
     try {
       const response = await fetch(
@@ -131,25 +135,12 @@ export default function CartClient() {
         const { checkoutUrl } = await response.json();
         window.location.href = checkoutUrl;
       } else {
-        alert("Failed to get checkout URL");
+        setError("Failed to get checkout URL");
       }
-    } catch (error) {
-      console.error("Error getting checkout URL:", error);
-      alert("Failed to proceed to checkout");
+    } catch (err) {
+      logError("Error getting checkout URL:", err);
+      setError("Failed to proceed to checkout");
     }
-  };
-
-  const formatPrice = (amount: string, currency: string) => {
-    const numAmount = parseFloat(amount);
-    const formatted = numAmount.toLocaleString("da-DK", {
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    });
-
-    if (currency === "DKK") {
-      return `${formatted} DKK`;
-    }
-    return `${formatted} ${currency}`;
   };
 
   if (loading) {
@@ -183,6 +174,13 @@ export default function CartClient() {
       <div className="text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px] mb-12">
         CART
       </div>
+
+      {/* Error message */}
+      {error && (
+        <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded">
+          <p className="text-red-600 text-base font-['Archivo']">{error}</p>
+        </div>
+      )}
 
       {/* Column Headers */}
       <div className="grid grid-cols-[400px_1fr_200px_200px] gap-8 mb-8 pb-4 border-b-2 border-black">

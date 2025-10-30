@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { shopifyFetch } from "@/lib/shopify/storefront";
 import { CartQueryResponse } from "@/types/shopify";
+import { getErrorMessage } from "@/lib/utils/errors";
 
 // Query to get checkout URL
 const GET_CHECKOUT_URL_QUERY = `
@@ -33,9 +34,8 @@ export async function GET(
     // Return the checkout URL (frontend can redirect user to this)
     return NextResponse.json({ checkoutUrl: cart.checkoutUrl });
   } catch (error) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Unknown error" },
+      { error: getErrorMessage(error) },
       { status: 500 }
     );
   }
