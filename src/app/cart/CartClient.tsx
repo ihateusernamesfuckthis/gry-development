@@ -157,11 +157,13 @@ export default function CartClient() {
 
   if (cartLines.length === 0) {
     return (
-      <div className="self-stretch px-0 py-12">
-        <div className="text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px] mb-12">
-          CART
+      <div className="self-stretch inline-flex flex-col justify-start items-start gap-3">
+        <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5">
+          <div className="justify-start text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px]">
+            CART
+          </div>
         </div>
-        <div className="text-black text-2xl font-extrabold font-['Archivo']">
+        <div className="text-black text-2xl font-extrabold font-['Archivo'] pt-12">
           Your cart is empty
         </div>
       </div>
@@ -169,12 +171,15 @@ export default function CartClient() {
   }
 
   return (
-    <div className="self-stretch px-0 py-12">
+    <div className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Header */}
-      <div className="text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px] mb-12">
-        CART
+      <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5">
+        <div className="justify-start text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px]">
+          CART
+        </div>
       </div>
 
+      <div className="self-stretch pt-12 flex flex-col gap-8">
       {/* Error message */}
       {error && (
         <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded">
@@ -285,6 +290,7 @@ export default function CartClient() {
         >
           PROCEED TO CHECKOUT
         </button>
+      </div>
       </div>
     </div>
   );
