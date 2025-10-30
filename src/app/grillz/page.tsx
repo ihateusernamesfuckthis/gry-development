@@ -71,8 +71,10 @@ export default function GrillzPage() {
                   data-layer="BUTTONS"
                   className="Buttons size- inline-flex justify-start items-center gap-8"
                 >
-                  <Link
-                    href="/book"
+                  <a
+                    href="https://vmuccc-by.myshopify.com/products/consultation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-layer="EXPLORECTA"
                     className="Explorecta w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
                   >
@@ -82,7 +84,7 @@ export default function GrillzPage() {
                     >
                       BOOK
                     </div>
-                  </Link>
+                  </a>
                   <button
                     data-layer="LEARN MORE"
                     className="LearnMore w-32 h-12 text-center justify-center text-black text-lg font-extrabold font-['Archivo'] hover:opacity-70 transition-opacity"
@@ -352,8 +354,10 @@ export default function GrillzPage() {
                 data-layer="BUTTONS"
                 className="Buttons self-stretch inline-flex justify-center items-center gap-8"
               >
-                <Link
-                  href="/book"
+                <a
+                  href="https://vmuccc-by.myshopify.com/products/consultation"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   data-layer="EXPLORECTA"
                   className="Explorecta w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
                 >
@@ -363,7 +367,7 @@ export default function GrillzPage() {
                   >
                     BOOK
                   </div>
-                </Link>
+                </a>
                 <Link
                   href="/contact"
                   data-layer="CONTACTCTA"
