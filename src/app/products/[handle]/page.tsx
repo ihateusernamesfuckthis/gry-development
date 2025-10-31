@@ -62,9 +62,9 @@ export default async function ProductPage({
   }
 
   return (
-    <main className="lg:flex">
+    <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 flex flex-col gap-12">
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12">
         <div className="Content self-stretch pl-0 pr-0 lg:pr-14 inline-flex flex-col justify-start items-center gap-12 lg:gap-24">
           <ProductClient product={product} />
         </div>

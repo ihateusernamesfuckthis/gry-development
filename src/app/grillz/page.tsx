@@ -7,9 +7,9 @@ import Image from "next/image";
 
 export default function GrillzPage() {
   return (
-    <main className="lg:flex">
+    <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 flex flex-col gap-12">
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12">
         {/* CONTENT */}
         <div
           id="grillz"
