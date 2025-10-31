@@ -187,8 +187,8 @@ export default function CartClient() {
         </div>
       )}
 
-      {/* Column Headers */}
-      <div className="grid grid-cols-[400px_1fr_200px_200px] gap-8 mb-8 pb-4 border-b-2 border-black">
+      {/* Column Headers - Hidden on mobile, visible on desktop */}
+      <div className="hidden lg:grid lg:grid-cols-[400px_1fr_200px_200px] gap-8 mb-8 pb-4 border-b-2 border-black">
         <div className="text-black text-lg font-extrabold font-['Archivo']">
           ITEM
         </div>
@@ -211,10 +211,13 @@ export default function CartClient() {
           return (
             <div
               key={line.id}
-              className="grid grid-cols-[400px_1fr_200px_200px] gap-8 pb-8 border-b border-gray-200"
+              className="
+                flex flex-col gap-4 p-4 border rounded-lg
+                lg:grid lg:grid-cols-[400px_1fr_200px_200px] lg:gap-8 lg:p-0 lg:border-0 lg:rounded-none lg:pb-8 lg:border-b lg:border-gray-200
+              "
             >
               {/* Product Image */}
-              <div className="w-full h-[400px] bg-stone-50 relative">
+              <div className="relative w-full h-64 lg:h-[400px] bg-stone-50">
                 {productImage ? (
                   <Image
                     src={productImage.url}
@@ -245,21 +248,24 @@ export default function CartClient() {
                 </div>
               </div>
 
-              {/* Quantity Controls */}
+              {/* Quantity Controls - Mobile: label + input horizontal, Desktop: vertical */}
               <div className="flex flex-col gap-2">
-                <input
-                  type="number"
-                  min="1"
-                  value={line.quantity}
-                  onChange={(e) => {
-                    const newQty = parseInt(e.target.value);
-                    if (newQty > 0) {
-                      updateQuantity(line.id, newQty);
-                    }
-                  }}
-                  disabled={updatingLineId === line.id}
-                  className="w-24 h-12 border border-black text-center text-black text-lg font-normal font-['Archivo']"
-                />
+                <div className="flex items-center justify-between lg:block">
+                  <span className="lg:hidden font-bold text-black text-sm font-['Archivo']">Quantity:</span>
+                  <input
+                    type="number"
+                    min="1"
+                    value={line.quantity}
+                    onChange={(e) => {
+                      const newQty = parseInt(e.target.value);
+                      if (newQty > 0) {
+                        updateQuantity(line.id, newQty);
+                      }
+                    }}
+                    disabled={updatingLineId === line.id}
+                    className="w-20 lg:w-24 h-10 lg:h-12 border border-black text-center text-black text-base lg:text-lg font-normal font-['Archivo']"
+                  />
+                </div>
                 <button
                   onClick={() => removeItem(line.id)}
                   disabled={updatingLineId === line.id}
@@ -269,9 +275,12 @@ export default function CartClient() {
                 </button>
               </div>
 
-              {/* Subtotal */}
-              <div className="text-black text-lg font-normal font-['Archivo']">
-                {lineTotal && formatPrice(lineTotal.amount, lineTotal.currencyCode)}
+              {/* Subtotal - Mobile: label + price horizontal, Desktop: just price */}
+              <div className="flex items-center justify-between lg:block">
+                <span className="lg:hidden font-bold text-black text-sm font-['Archivo']">Subtotal:</span>
+                <div className="text-black text-base lg:text-lg font-normal font-['Archivo']">
+                  {lineTotal && formatPrice(lineTotal.amount, lineTotal.currencyCode)}
+                </div>
               </div>
             </div>
           );
@@ -279,14 +288,25 @@ export default function CartClient() {
       </div>
 
       {/* Total and Checkout */}
-      <div className="mt-12 flex justify-end items-center gap-12">
-        <div className="text-black text-2xl font-extrabold font-['Archivo']">
+      <div className="
+        mt-12
+        flex flex-col gap-6
+        lg:flex-row lg:justify-end lg:items-center lg:gap-12
+      ">
+        <div className="text-black text-xl lg:text-2xl font-extrabold font-['Archivo']">
           TOTAL:{" "}
           {cart && formatPrice(cart.cost.totalAmount.amount, cart.cost.totalAmount.currencyCode)}
         </div>
         <button
           onClick={proceedToCheckout}
-          className="px-8 py-4 bg-black text-white text-lg font-extrabold font-['Archivo'] hover:bg-gray-800 transition-colors"
+          className="
+            w-full lg:w-auto
+            px-8 py-4
+            bg-black text-white
+            text-base lg:text-lg
+            font-extrabold font-['Archivo']
+            hover:bg-gray-800 transition-colors
+          "
         >
           PROCEED TO CHECKOUT
         </button>

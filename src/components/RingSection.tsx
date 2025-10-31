@@ -4,17 +4,17 @@ export default function RingSection() {
   return (
     <section className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}
-      <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5 sticky top-0 z-10">
+      <div className="self-stretch pr-[5px] pt-4 bg-white flex flex-col lg:inline-flex lg:flex-row justify-start items-start lg:items-end gap-1 lg:gap-3.5 sticky top-0 z-10">
         <div id="rings" className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
           RINGS
         </div>
-        <div className="w-58 h-6 justify-end text-black text-sm font-[800] font-['Archivo']">
+        <div className="hidden lg:block w-58 h-6 justify-end text-black text-sm font-[800] font-['Archivo']">
           handcrafted, made to order.
         </div>
       </div>
 
-      {/* Ring Grid */}
-      <div className="self-stretch inline-flex justify-end items-start gap-8">
+      {/* Ring Grid - Mobile: Stacked vertically, Desktop: Horizontal row */}
+      <div className="self-stretch flex flex-col gap-6 lg:inline-flex lg:flex-row lg:justify-end lg:items-start lg:gap-8">
         <RingCard
           name="RING #1"
           material="925 Sterling Silver"
