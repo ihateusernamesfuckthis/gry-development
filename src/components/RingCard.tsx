@@ -11,9 +11,9 @@ interface RingCardProps {
 
 export default function RingCard({ name, material, price, imageNumber, handle }: RingCardProps) {
   return (
-    <Link href={`/products/${handle}`} className="flex-1 h-[497.10px] inline-flex flex-col justify-start items-start gap-3">
+    <Link href={`/products/${handle}`} className="w-full lg:flex-1 inline-flex flex-col justify-start items-start gap-3">
       {/* Image with hover effect */}
-      <div className="self-stretch flex-1 relative group cursor-pointer">
+      <div className="w-full h-96 lg:h-[497.10px] relative group cursor-pointer">
         <Image
           src={`/ringsection/ring${imageNumber}.avif`}
           alt={name}

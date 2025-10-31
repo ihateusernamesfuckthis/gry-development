@@ -5,19 +5,19 @@ export default function GrillzSection() {
   return (
     <section className="self-stretch inline-flex flex-col justify-start items-start gap-3">
       {/* Section Header */}
-      <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5 sticky top-0 z-10">
-        <div id="grillz" className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]">
+      <div className="self-stretch pr-[5px] pt-4 bg-white flex flex-col lg:inline-flex lg:flex-row justify-start items-start lg:items-end gap-1 lg:gap-3.5 sticky top-0 z-10">
+        <div id="grillz" className="justify-start text-8xl lg:text-8xl text-black font-[900] font-['Archivo'] uppercase leading-[60px] lg:leading-[80px]">
           GRILLZ
         </div>
-        <div className="w-60 h-6 justify-end text-blue text-sm font-[800] font-['Archivo']">
+        <div className="hidden lg:block w-60 h-6 justify-end text-blue text-sm font-[800] font-['Archivo']">
           item description
         </div>
       </div>
 
-      {/* Unified Canvas - All Content in One Container */}
-      <div className="self-stretch relative min-h-[700px] pt-12">
+      {/* Unified Canvas - Mobile: Flex stacked, Desktop: Absolute positioned */}
+      <div className="self-stretch flex flex-col gap-6 lg:relative lg:min-h-[700px] lg:pt-12">
         {/* Image 1 - Top Left Area */}
-        <Link href="/grillz" className="absolute left-[8%] top-[5%] w-[22%] hover:scale-105 transition-transform cursor-pointer">
+        <Link href="/grillz" className="block lg:absolute lg:left-[8%] lg:top-[5%] lg:w-[22%] hover:scale-105 transition-transform cursor-pointer">
           <Image
             src="/grillzsection/plainopen.avif"
             alt="Grillz Design 1"
@@ -28,7 +28,7 @@ export default function GrillzSection() {
         </Link>
 
         {/* Image 2 - Top Right Area */}
-        <Link href="/grillz" className="absolute right-[5%] top-0 w-[35%] hover:scale-105 transition-transform cursor-pointer">
+        <Link href="/grillz" className="block lg:absolute lg:right-[5%] lg:top-0 lg:w-[35%] hover:scale-105 transition-transform cursor-pointer">
           <Image
             src="/grillzsection/playstation1.avif"
             alt="Grillz Design 2"
@@ -39,7 +39,7 @@ export default function GrillzSection() {
         </Link>
 
         {/* Image 3 - Center Area */}
-        <Link href="/grillz" className="absolute left-[35%] top-[25%] w-[18%] hover:scale-105 transition-transform cursor-pointer">
+        <Link href="/grillz" className="block lg:absolute lg:left-[35%] lg:top-[25%] lg:w-[18%] hover:scale-105 transition-transform cursor-pointer">
           <Image
             src="/grillzsection/curvy.avif"
             alt="Grillz Design 3"
@@ -50,20 +50,20 @@ export default function GrillzSection() {
         </Link>
 
         {/* CTA Text - Left Center */}
-        <div className="absolute left-0 top-[45%] flex flex-col gap-2">
-          <Link href="/grillz" className="text-black text-7xl font-[800] font-['Archivo'] uppercase leading-tight whitespace-nowrap transition-colors cursor-pointer">
+        <div className="flex flex-col gap-2 lg:absolute lg:left-0 lg:top-[45%]">
+          <Link href="/grillz" className="text-4xl lg:text-7xl text-black font-[800] font-['Archivo'] uppercase leading-tight lg:whitespace-nowrap transition-colors cursor-pointer">
             FIND YOUR SMILE
           </Link>
           <Link
             href="/grillz"
-            className="text-yellow-400 text-lg font-[800] font-['Archivo'] transition-colors"
+            className="text-lg font-[800] font-['Archivo'] text-yellow-400 transition-colors"
           >
             EXPLORE
           </Link>
         </div>
 
-        {/* Image 4 - Bottom Left (Rotated) */}
-        <Link href="/grillz" className="absolute left-[8%] bottom-[8%] w-[20%] hover:scale-105 transition-transform cursor-pointer">
+        {/* Image 4 - Bottom Left */}
+        <Link href="/grillz" className="block lg:absolute lg:left-[8%] lg:bottom-[8%] lg:w-[20%] hover:scale-105 transition-transform cursor-pointer">
           <Image
             src="/grillzsection/tribal.avif"
             alt="Grillz Design 4"
@@ -74,7 +74,7 @@ export default function GrillzSection() {
         </Link>
 
         {/* Image 5 - Bottom Right */}
-        <Link href="/grillz" className="absolute right-[12%] bottom-[5%] w-[32%] hover:scale-105 transition-transform cursor-pointer">
+        <Link href="/grillz" className="block lg:absolute lg:right-[12%] lg:bottom-[5%] lg:w-[32%] hover:scale-105 transition-transform cursor-pointer">
           <Image
             src="/grillzsection/tree.avif"
             alt="Grillz Design 5"

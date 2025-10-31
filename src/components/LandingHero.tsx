@@ -67,9 +67,9 @@ export default function LandingHero() {
       <div className="absolute inset-0 bg-black/20" />
 
       {/* GRY Logo - centered on hero */}
-      <div className="absolute inset-0 flex items-end justify-start z-20 pl-16 pb-16">
+      <div className="absolute inset-0 flex items-end justify-start z-20 pl-4 pb-4 lg:pl-16 lg:pb-16">
         <div
-          className="text-white text-8xl font-[900] font-['Archivo'] uppercase leading-[80px]"
+          className="text-5xl lg:text-8xl text-white font-[900] font-['Archivo'] uppercase leading-[60px] lg:leading-[80px]"
         >
           GRY
         </div>

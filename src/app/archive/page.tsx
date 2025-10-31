@@ -45,9 +45,9 @@ export default function ArchivePage() {
 
   if (loading) {
     return (
-      <main className="flex">
+      <main className="lg:flex">
         <Nav />
-        <div className="flex-1 flex flex-col gap-12 items-center justify-center min-h-screen">
+        <div className="w-full lg:flex-1 flex flex-col gap-12 items-center justify-center min-h-screen">
           <p className="text-black text-lg font-['Archivo']">Loading...</p>
         </div>
       </main>
@@ -56,9 +56,9 @@ export default function ArchivePage() {
 
   if (error || !archiveData) {
     return (
-      <main className="flex">
+      <main className="lg:flex">
         <Nav />
-        <div className="flex-1 flex flex-col gap-12 items-center justify-center min-h-screen">
+        <div className="w-full lg:flex-1 flex flex-col gap-12 items-center justify-center min-h-screen">
           <p className="text-black text-lg font-['Archivo']">
             Error loading archive: {error}
           </p>
@@ -68,9 +68,9 @@ export default function ArchivePage() {
   }
 
   return (
-    <main className="flex">
+    <main className="lg:flex">
       <Nav />
-      <div className="flex-1 flex flex-col gap-12">
+      <div className="w-full lg:flex-1 flex flex-col gap-12">
         <ArchiveCategorySection
           title="FIND YOUR SMILE"
           images={archiveData.findYourSmile.images}
