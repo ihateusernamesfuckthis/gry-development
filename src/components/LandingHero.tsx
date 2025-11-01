@@ -18,7 +18,18 @@ export default function LandingHero() {
     }
 
     const handleScroll = () => {
-      const scrollY = window.scrollY;
+      // For desktop, check the content container scroll; for mobile, check window scroll
+      const isDesktop = window.innerWidth >= 1024; // lg breakpoint
+      let scrollY = window.scrollY;
+
+      if (isDesktop) {
+        // Find the scrollable content container on desktop
+        const contentContainer = document.getElementById('main-content');
+        if (contentContainer) {
+          scrollY = contentContainer.scrollTop;
+        }
+      }
+
       const scrollThreshold = window.innerHeight * SCROLL_THRESHOLD_PERCENTAGE;
 
       if (scrollY > scrollThreshold && !hasScrolled) {
@@ -34,8 +45,20 @@ export default function LandingHero() {
       }
     };
 
+    // Add scroll listener to both window and content container
+    const contentContainer = document.getElementById('main-content');
+
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (contentContainer) {
+      contentContainer.addEventListener("scroll", handleScroll, { passive: true });
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (contentContainer) {
+        contentContainer.removeEventListener("scroll", handleScroll);
+      }
+    };
   }, [hasScrolled]);
 
   // Don't render if user has seen it
@@ -49,7 +72,7 @@ export default function LandingHero() {
       style={{
         opacity,
         transform: `translateY(${hasScrolled ? '-5%' : '0'})`,
-        pointerEvents: hasScrolled ? 'none' : 'auto'
+        pointerEvents: 'none'
       }}
     >
       {/* Background image - will be replaced with image loop later */}
