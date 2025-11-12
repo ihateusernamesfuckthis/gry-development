@@ -26,14 +26,14 @@ export default function GrillzPage() {
 
             {/* Desktop decorative images - hidden on mobile */}
             <Image
-              className="hidden lg:block absolute w-[39rem] h-auto left-[43%] top-[13rem] origin-top-left rotate-[-7.35deg]"
+              className="hidden lg:block absolute w-[28rem] xl:w-[35rem] 2xl:w-[39rem] h-auto left-[40%] xl:left-[43%] top-[12rem] xl:top-[13rem] origin-top-left rotate-[-7.35deg]"
               src="/grillzPage/hero/hero1.avif"
               alt="Decorative grillz"
               width={629}
               height={363}
             />
             <Image
-              className="hidden lg:block absolute w-[32rem] h-auto left-0 top-[7rem]"
+              className="hidden lg:block absolute w-[24rem] xl:w-[28rem] 2xl:w-[32rem] h-auto left-0 top-[6rem] xl:top-[7rem]"
               src="/grillzPage/hero/hero2.avif"
               alt="Decorative grillz"
               width={508}
@@ -113,7 +113,7 @@ export default function GrillzPage() {
               </p>
               {/* Desktop decorative image */}
               <Image
-                className="hidden lg:block absolute w-[24rem] h-auto right-0 top-[4.25rem]"
+                className="hidden lg:block absolute w-[18rem] xl:w-[22rem] 2xl:w-[24rem] h-auto right-0 top-[4rem] xl:top-[4.25rem]"
                 src="/grillzPage/process/step1.avif"
                 alt="Decorative grillz"
                 width={378}
@@ -142,7 +142,7 @@ export default function GrillzPage() {
               </p>
               {/* Desktop decorative image */}
               <Image
-                className="hidden lg:block absolute w-[29rem] h-auto left-0 top-[1.625rem]"
+                className="hidden lg:block absolute w-[22rem] xl:w-[26rem] 2xl:w-[29rem] h-auto left-0 top-[1.5rem] xl:top-[1.625rem]"
                 src="/grillzPage/process/step2.avif"
                 alt="Decorative grillz"
                 width={458}
@@ -173,7 +173,7 @@ export default function GrillzPage() {
               </p>
               {/* Desktop decorative image */}
               <Image
-                className="hidden lg:block absolute w-[24rem] h-auto right-0 top-[0.9375rem] origin-top-left rotate-[12.73deg]"
+                className="hidden lg:block absolute w-[18rem] xl:w-[22rem] 2xl:w-[24rem] h-auto right-0 top-[0.75rem] xl:top-[0.9375rem] origin-top-left rotate-[12.73deg]"
                 src="/grillzPage/process/step3.avif"
                 alt="Decorative grillz"
                 width={410}
