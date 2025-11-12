@@ -3,7 +3,14 @@ import Link from "next/link";
 
 export default function GrillzSection() {
   return (
-    <section id="grillz" className="self-stretch flex flex-col justify-start items-start gap-6">
+    <section className="self-stretch flex flex-col justify-start items-start gap-3 lg:gap-6">
+      {/* Section Header - Desktop only, sticky */}
+      <div className="hidden lg:flex self-stretch pr-[5px] pt-4 bg-white flex-col lg:inline-flex lg:flex-row justify-start items-start lg:items-end gap-1 lg:gap-3.5 sticky top-0 z-10">
+        <div id="grillz" className="justify-start text-8xl text-black font-black font-['Archivo'] uppercase leading-[80px]">
+          GRILLZ
+        </div>
+      </div>
+
       {/* Mobile & Desktop Container */}
       <div className="self-stretch h-[44.75rem] lg:h-[47.3rem] relative">
         {/* Mobile Layout - Hidden on Desktop */}
