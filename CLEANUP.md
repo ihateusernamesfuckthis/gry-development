@@ -15,4 +15,3 @@ Done:
 Issues that needs fixing in no particular order:
 
 5. Adding another section of the archive page called INSPIRATION
-9. Maybe moving the configuration/dependency files into a separate folder for a cleaner codebase
