@@ -50,15 +50,15 @@ export default function GrillzSection() {
         </Link>
 
         {/* CTA Text - Left Center */}
-        <div className="flex flex-col gap-2 lg:absolute lg:left-0 lg:top-[45%]">
-          <Link href="/grillz" className="text-4xl lg:text-7xl text-black font-[800] font-['Archivo'] uppercase leading-tight lg:whitespace-nowrap transition-colors cursor-pointer">
-            FIND YOUR SMILE
+        <div className="flex flex-col gap-2 lg:absolute lg:left-0 lg:top-[50%]">
+          <Link href="/grillz" className="text-4xl lg:text-6xl text-yellow-400 font-[800] font-['Archivo'] uppercase leading-tight lg:whitespace-nowrap transition-colors cursor-pointer">
+          EXPLORE
           </Link>
           <Link
             href="/grillz"
             className="text-lg font-[800] font-['Archivo'] text-yellow-400 transition-colors"
           >
-            EXPLORE
+            
           </Link>
         </div>
 
