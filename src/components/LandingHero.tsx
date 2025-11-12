@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { SCROLL_THRESHOLD_PERCENTAGE, FADE_OUT_DURATION, SESSION_KEYS } from "@/constants";
 
 export default function LandingHero() {
@@ -68,31 +67,17 @@ export default function LandingHero() {
 
   return (
     <div
-      className="fixed top-0 left-0 w-screen h-[100vh] z-50 transition-all duration-500 ease-out"
+      className="fixed top-0 left-0 w-screen h-[100vh] z-50 transition-all duration-500 ease-out bg-white"
       style={{
         opacity,
         transform: `translateY(${hasScrolled ? '-5%' : '0'})`,
         pointerEvents: 'none'
       }}
     >
-      {/* Background image - will be replaced with image loop later */}
-      <div className="absolute inset-0 w-full h-full">
-        <Image
-          src="/heroSection/placeholder.JPG"
-          alt="Hero background"
-          fill
-          className="object-cover"
-          priority
-        />
-      </div>
-
-      {/* Dark overlay for better text contrast */}
-      <div className="absolute inset-0 bg-black/20" />
-
       {/* GRY Logo - centered on hero */}
-      <div className="absolute inset-0 flex items-end justify-start z-20 pl-4 pb-4 lg:pl-16 lg:pb-16">
+      <div className="absolute inset-0 flex items-center justify-center z-20">
         <div
-          className="text-5xl lg:text-8xl text-white font-[900] font-['Archivo'] uppercase leading-[60px] lg:leading-[80px]"
+          className="text-8xl lg:text-[12rem] text-black font-[900] font-['Archivo'] uppercase"
         >
           GRY
         </div>
@@ -100,11 +85,11 @@ export default function LandingHero() {
 
       {/* Scroll Indicator - appears after 2 seconds */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-20 animate-fade-in-delayed">
-        <div className="text-white text-sm font-[600] font-['Archivo'] tracking-wider">
+        <div className="text-black text-sm font-[600] font-['Archivo'] tracking-wider">
           SCROLL TO ENTER
         </div>
-        <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2 animate-bounce-slow">
-          <div className="w-1.5 h-1.5 bg-white rounded-full animate-scroll-down" />
+        <div className="w-6 h-10 border-2 border-black rounded-full flex items-start justify-center p-2 animate-bounce-slow">
+          <div className="w-1.5 h-1.5 bg-black rounded-full animate-scroll-down" />
         </div>
       </div>
     </div>

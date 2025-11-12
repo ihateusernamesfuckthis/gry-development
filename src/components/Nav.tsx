@@ -97,7 +97,7 @@ export default function Nav() {
 
   const linkClass = (id: string, base = "left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo']") =>
     `${base} transition-all duration-100 ${
-      activeSection === id ? "text-yellow-400" : "text-black scale-100"
+      activeSection === id ? "text-contrast" : "text-black scale-100"
     }`;
 
   const handleLinkClick = () => {
@@ -230,7 +230,7 @@ export default function Nav() {
             <Link href="/cart" className="w-14 h-5 relative" onClick={handleLinkClick}>
               <div
                 className={`left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo'] transition-all duration-300 ${
-                  hasCartItems ? "text-yellow-500 scale-110" : "text-black scale-100"
+                  hasCartItems ? "text-contrast scale-110" : "text-black scale-100"
                 }`}
               >
                 CART

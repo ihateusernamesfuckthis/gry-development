@@ -51,14 +51,14 @@ export default function GrillzSection() {
 
         {/* CTA Text - Left Center */}
         <div className="flex flex-col gap-2 lg:absolute lg:left-0 lg:top-[50%]">
-          <Link href="/grillz" className="text-4xl lg:text-6xl text-yellow-400 font-[800] font-['Archivo'] uppercase leading-tight lg:whitespace-nowrap transition-colors cursor-pointer">
+          <Link href="/grillz" className="text-4xl lg:text-6xl text-contrast font-[800] font-['Archivo'] uppercase leading-tight lg:whitespace-nowrap transition-colors cursor-pointer">
           EXPLORE
           </Link>
           <Link
             href="/grillz"
-            className="text-lg font-[800] font-['Archivo'] text-yellow-400 transition-colors"
+            className="text-lg font-[800] font-['Archivo'] text-contrast transition-colors"
           >
-            
+
           </Link>
         </div>
 

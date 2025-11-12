@@ -9,426 +9,311 @@ export default function GrillzPage() {
   return (
     <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12">
-        {/* CONTENT */}
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col">
+        {/* CONTENT - Remove horizontal padding to prevent overflow */}
         <div
           id="grillz"
-          data-layer="CONTENT"
-          className="Content self-stretch pl-0 lg:pl-7 pr-0 lg:pr-10 inline-flex flex-col justify-start items-center gap-12 lg:gap-24"
+          className="self-stretch flex flex-col justify-start items-center gap-12 lg:gap-16"
         >
-          {/* GRILLZ SECTION */}
-          <div
-            data-layer="GRILLZ SECTION"
-            className="GrillzSection self-stretch flex flex-col justify-start items-start gap-6"
-          >
+          {/* HERO SECTION */}
+          <section className="self-stretch relative py-8 lg:py-0 lg:h-[567px] flex flex-col justify-start items-start gap-6 px-4 lg:px-0">
             {/* GRILLZ HEADER */}
-            <div
-              data-layer="GRILLZ HEADER"
-              className="GrillzHeader self-stretch pr-[5px] pt-4 bg-white flex flex-col justify-center items-start gap-3.5"
-            >
-              <div
-                data-layer="GRILLZ"
-                className="Grillz justify-start text-5xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px]"
-              >
+            <div className="self-stretch pt-4 pb-4 lg:pt-4 bg-white px-4 lg:px-0">
+              <h1 className="text-4xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px]">
                 GRILLZ
-              </div>
+              </h1>
             </div>
 
-            {/* HERO - Mobile: stacked, Desktop: absolute positioned */}
-            <div
-              data-layer="HERO"
-              className="Hero self-stretch py-8 lg:h-[567px] lg:py-0 relative"
-            >
-              {/* Decorative Images - Hidden on mobile, shown on desktop */}
+            {/* Desktop decorative images - hidden on mobile */}
+            <Image
+              className="hidden lg:block absolute w-[39rem] h-auto left-[43%] top-[13rem] origin-top-left rotate-[-7.35deg]"
+              src="/grillzPage/hero/hero1.avif"
+              alt="Decorative grillz"
+              width={629}
+              height={363}
+            />
+            <Image
+              className="hidden lg:block absolute w-[32rem] h-auto left-0 top-[7rem]"
+              src="/grillzPage/hero/hero2.avif"
+              alt="Decorative grillz"
+              width={508}
+              height={235}
+            />
+
+            {/* Mobile decorative image - top */}
+            <div className="lg:hidden w-full flex justify-center">
               <Image
-                data-layer="GrillTransparent3 1"
-                className="hidden lg:block Grilltransparent31 w-[629.15px] h-96 left-[487.23px] top-[209.51px] absolute origin-top-left rotate-[-7.35deg]"
-                src="/GrillzPlaceholders/GrillTransparent3.png"
-                alt="Grill transparent 3"
-                width={629}
-                height={363}
+                src="/grillzPage/hero/hero1.avif"
+                alt="Decorative grillz"
+                width={382}
+                height={176}
+                className="w-full max-w-sm h-auto"
               />
-              <Image
-                data-layer="GrillTransparent4 1"
-                className="hidden lg:block Grilltransparent41 w-[508.17px] h-60 left-0 top-[77px] absolute"
-                src="/GrillzPlaceholders/GrillTransparent4.png"
-                alt="Grill transparent 4"
-                width={508}
-                height={235}
-              />
-              {/* Mobile-only decorative grillz image - Top */}
-              <div className="lg:hidden w-full flex justify-center mb-6">
-                <Image
-                  src="/GrillzPlaceholders/GrillTransparent4.png"
-                  alt="Decorative grillz"
-                  width={300}
-                  height={140}
-                  className="w-3/4 h-auto opacity-80"
-                />
-              </div>
-
-              {/* CTA - Mobile: normal flow, Desktop: absolute positioned */}
-              <div
-                data-layer="HERO CTA"
-                className="HeroCta w-full lg:w-[895px] lg:left-0 lg:top-[439px] lg:absolute inline-flex flex-col justify-start items-start gap-4 px-4 lg:px-0"
-              >
-                <div
-                  data-layer="lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                  className="LoremIpsumDolorSitAmetConsecteturAdipiscingElitSedDoEiusmodTemporIncididuntUtLaboreEtDoloreMagnaAliqua w-full lg:w-[480px] justify-start text-black text-sm font-extrabold font-['Archivo']"
-                >
-                  lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua.
-                </div>
-                <div
-                  data-layer="BUTTONS"
-                  className="Buttons inline-flex justify-start items-center gap-8"
-                >
-                  <a
-                    href="https://vmuccc-by.myshopify.com/products/consultation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-layer="EXPLORECTA"
-                    className="Explorecta w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
-                  >
-                    <div
-                      data-layer="BOOK"
-                      className="Book w-36 left-0 top-[15px] absolute text-center justify-start text-white text-lg font-extrabold font-['Archivo']"
-                    >
-                      BOOK
-                    </div>
-                  </a>
-                  <button
-                    data-layer="LEARN MORE"
-                    className="LearnMore w-32 h-12 text-center justify-center text-black text-lg font-extrabold font-['Archivo'] hover:opacity-70 transition-opacity"
-                    onClick={() => {
-                      document
-                        .getElementById("process-section")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                  >
-                    LEARN MORE
-                  </button>
-                </div>
-              </div>
-
-              {/* Mobile-only decorative grillz image - Bottom */}
-              <div className="lg:hidden w-full flex justify-center mt-8">
-                <Image
-                  src="/GrillzPlaceholders/GrillTransparent5.png"
-                  alt="Decorative grillz"
-                  width={300}
-                  height={140}
-                  className="w-3/4 h-auto opacity-80"
-                />
-              </div>
             </div>
 
-            {/* PROCESS SECTION */}
-            <div
-              id="process-section"
-              data-layer="PROCESS SECTION"
-              className="ProcessSection self-stretch pt-12 lg:pt-24 flex flex-col justify-start items-start gap-2.5"
-            >
-              <div
-                data-layer="THE PROCESS"
-                className="TheProcess w-32 text-center justify-end text-black text-lg font-extrabold font-['Archivo']"
-              >
-                THE PROCESS
-              </div>
-
-              {/* STEP 1 */}
-              <div
-                data-layer="STEP 1"
-                className="Step1 self-stretch pb-16 relative flex flex-col justify-start items-start gap-4"
-              >
-                <div
-                  data-layer="BOOK A CONSULTATION"
-                  className="BookAConsultation w-full max-w-7xl justify-start text-3xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-tight lg:leading-[80px]"
-                >
-                  BOOK A CONSULTATION
-                </div>
-                <div
-                  data-layer="choose a time"
-                  className="ChooseATime w-full lg:w-[480px] justify-start text-black text-sm font-extrabold font-['Archivo']"
-                >
-                  choose a time
-                </div>
-                <Image
-                  data-layer="GrillTransparent1 2"
-                  className="hidden lg:block Grilltransparent12 w-72 h-36 left-[858px] top-[8px] absolute"
-                  src="/GrillzPlaceholders/GrillTransparent2.png"
-                  alt="Grill transparent 2"
-                  width={285}
-                  height={144}
-                />
-              </div>
-
-              {/* Mobile-only decorative grillz image - Between Step 1 & 2 */}
-              <div className="lg:hidden w-full flex justify-center py-8">
-                <Image
-                  src="/GrillzPlaceholders/GrillTransparent3.png"
-                  alt="Decorative grillz"
-                  width={300}
-                  height={140}
-                  className="w-2/3 h-auto opacity-70"
-                />
-              </div>
-
-              {/* STEP 2 */}
-              <div
-                data-layer="STEP 2"
-                className="Step2 self-stretch py-16 relative flex flex-col justify-start items-end gap-4"
-              >
-                <div
-                  data-layer="GET YOUR IMPRESSION"
-                  className="GetYourImpression w-full max-w-3xl text-right justify-start text-3xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-tight lg:leading-[80px]"
-                >
-                  GET YOUR IMPRESSION
-                </div>
-                <div
-                  data-layer="come by the studio and we get your dental impression"
-                  className="ComeByTheStudioAndWeGetYourDentalImpression w-full lg:w-[480px] text-right justify-start text-black text-sm font-extrabold font-['Archivo']"
-                >
-                  come by the studio and we get your dental impression
-                </div>
-                <Image
-                  data-layer="GrillTransparent5 2"
-                  className="hidden lg:block Grilltransparent52 w-[458px] h-52 left-0 top-[66px] absolute"
-                  src="/GrillzPlaceholders/GrillTransparent5.png"
-                  alt="Grill transparent 5"
-                  width={458}
-                  height={211}
-                />
-              </div>
-
-              {/* Mobile-only decorative grillz image - Between Step 2 & 3 */}
-              <div className="lg:hidden w-full flex justify-center py-8">
-                <Image
-                  src="/GrillzPlaceholders/GrillTransparent6.png"
-                  alt="Decorative grillz"
-                  width={300}
-                  height={120}
-                  className="w-2/3 h-auto opacity-70"
-                />
-              </div>
-
-              {/* STEP 3 */}
-              <div
-                data-layer="STEP 3"
-                className="Step3 self-stretch pt-16 relative flex flex-col justify-start items-start gap-4"
-              >
-                <div
-                  data-layer="COLLECT YOUR NEW GRILLZ"
-                  className="CollectYourNewGrillz w-full max-w-7xl justify-start text-3xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-tight lg:leading-[80px]"
-                >
-                  COLLECT YOUR
-                  <br />
-                  NEW GRILLZ
-                </div>
-                <div
-                  data-layer="give us X days and your grillz will be ready for collection at the studio"
-                  className="GiveUsXDaysAndYourGrillzWillBeReadyForCollectionAtTheStudio w-full lg:w-[480px] justify-start text-black text-sm font-extrabold font-['Archivo']"
-                >
-                  give us X days and your grillz will be ready for collection
-                  at the studio
-                </div>
-                <Image
-                  data-layer="GrillTransparent6 2"
-                  className="hidden lg:block Grilltransparent62 w-80 h-32 left-[851.43px] top-0 absolute origin-top-left rotate-[12.73deg]"
-                  src="/GrillzPlaceholders/GrillTransparent6.png"
-                  alt="Grill transparent 6"
-                  width={313}
-                  height={124}
-                />
-              </div>
-            </div>
-
-            {/* STANDARD GRILLZ */}
-            <div
-              data-layer="STANDARDGRILLZ"
-              className="Standardgrillz self-stretch pt-24 flex flex-col justify-start items-start gap-4"
-            >
-              <div
-                data-layer="THE SELECTION"
-                className="TheSelection w-48 justify-end text-black text-lg font-extrabold font-['Archivo']"
-              >
-                THE SELECTION
-              </div>
-              <div
-                data-layer="BANNERS"
-                className="Banners self-stretch flex flex-col justify-start items-start gap-5"
-              >
-                {/* BANNER 1 - HEART */}
-                <div
-                  data-layer="BANNER1"
-                  className="Banner1 w-full lg:w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
-                >
-                  <Image
-                    src="/grillzPage/grillzBanner/heart.avif"
-                    alt="Heart Grillz"
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    data-layer="HEART"
-                    className="Heart w-full left-4 lg:left-[40px] top-[281px] absolute justify-start text-5xl lg:text-8xl text-white font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px] z-10"
-                  >
-                    HEART
-                  </div>
-                </div>
-
-                {/* BANNER 2 - FANG */}
-                <div
-                  data-layer="BANNER2"
-                  className="Banner2 w-full lg:w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
-                >
-                  <Image
-                    src="/grillzPage/grillzBanner/fang.avif"
-                    alt="Fang Grillz"
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    data-layer="FANG"
-                    className="Fang w-full left-4 lg:left-[40px] top-[281px] absolute justify-start text-5xl lg:text-8xl text-white font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px] z-10"
-                  >
-                    FANG
-                  </div>
-                </div>
-
-                {/* BANNER 3 - PLAIN */}
-                <div
-                  data-layer="BANNER3"
-                  className="Banner3 w-full lg:w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
-                >
-                  <Image
-                    src="/grillzPage/grillzBanner/plain.avif"
-                    alt="Plain Grillz"
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    data-layer="PLAIN"
-                    className="Plain w-full left-4 lg:left-[40px] top-[281px] absolute justify-start text-5xl lg:text-8xl text-white font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px] z-10"
-                  >
-                    PLAIN
-                  </div>
-                </div>
-
-                {/* BANNER 4 - ORGANIC */}
-                <div
-                  data-layer="BANNER4"
-                  className="Banner4 w-full lg:w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
-                >
-                  <Image
-                    src="/grillzPage/grillzBanner/organic.avif"
-                    alt="Organic Grillz"
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    data-layer="ORGANIC"
-                    className="Organic w-full left-4 lg:left-[40px] top-[281px] absolute justify-start text-5xl lg:text-8xl text-white font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px] z-10"
-                  >
-                    ORGANIC
-                  </div>
-                </div>
-
-                {/* BANNER 5 - OPEN FACE */}
-                <div
-                  data-layer="BANNER5"
-                  className="Banner5 w-full lg:w-[1143px] h-96 relative bg-gray-800 overflow-hidden"
-                >
-                  <Image
-                    src="/grillzPage/grillzBanner/openface.avif"
-                    alt="Open Face Grillz"
-                    fill
-                    className="object-cover"
-                  />
-                  <div
-                    data-layer="OPEN FACE"
-                    className="OpenFace w-full left-4 lg:left-[40px] top-[281px] absolute justify-start text-5xl lg:text-8xl text-white font-black font-['Archivo'] uppercase leading-[60px] lg:leading-[80px] z-10"
-                  >
-                    OPEN FACE
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CUSTOM GRILLZ */}
-            <div
-              data-layer="CUSTOMGRILLZ"
-              className="Customgrillz self-stretch pt-24 pb-36 flex flex-col justify-start items-start gap-4"
-            >
-              <div
-                data-layer="OR..."
-                className="Or self-stretch text-center justify-end text-black text-lg font-extrabold font-['Archivo']"
-              >
-                OR...
-              </div>
-              <div
-                data-layer="CUSTOM"
-                className="Custom self-stretch pt-24 pb-6 flex flex-col justify-center items-center gap-2.5"
-              >
-                <div
-                  data-layer="MAKE IT CUSTOM"
-                  className="MakeItCustom w-full max-w-7xl text-center justify-start text-3xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-tight lg:leading-[80px]"
-                >
-                  MAKE IT CUSTOM
-                </div>
-              </div>
-              <div
-                data-layer="BODYTEXT"
-                className="Bodytext self-stretch pb-12 inline-flex justify-center items-center gap-2.5"
-              >
-                <div
-                  data-layer="from 1 tooth to full mouth, the choice is yours. we'll work with you and create your own bespoke GRILLZ. 900 DKK PER TOOTH 925 STERLING ONLY"
-                  className="From1ToothToFullMouthTheChoiceIsYoursWeLlWorkWithYouAndCreateYourOwnBespokeGrillz900DkkPerTooth925SterlingOnly w-full lg:w-[1143px] text-center justify-start text-black text-sm font-extrabold font-['Archivo'] px-4 lg:px-0"
-                >
-                  from 1 tooth to full mouth, the choice is yours.
-                  <br />
-                  we&apos;ll work with you and create your own bespoke GRILLZ.
-                  <br />
-                  <br />
-                  900 DKK PER TOOTH
-                  <br />
-                  925 STERLING ONLY
-                </div>
-              </div>
-              <div
-                data-layer="BUTTONS"
-                className="Buttons self-stretch inline-flex justify-center items-center gap-8"
-              >
+            {/* Hero CTA */}
+            <div className="w-full lg:max-w-[56rem] lg:absolute lg:left-0 lg:bottom-[2rem] flex flex-col gap-4">
+              <p className="w-full lg:max-w-[30rem] text-black text-sm font-extrabold font-['Archivo']">
+                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <div className="flex flex-row items-center gap-8">
                 <a
                   href="https://vmuccc-by.myshopify.com/products/consultation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-layer="EXPLORECTA"
-                  className="Explorecta w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+                  className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
                 >
-                  <div
-                    data-layer="BOOK"
-                    className="Book w-36 left-0 top-[15px] absolute text-center justify-start text-white text-lg font-extrabold font-['Archivo']"
-                  >
+                  <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
                     BOOK
                   </div>
                 </a>
-                <Link
-                  href="/contact"
-                  data-layer="CONTACTCTA"
-                  className="Contactcta w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+                <button
+                  className="w-32 h-12 text-center text-black text-lg font-extrabold font-['Archivo'] hover:opacity-70 transition-opacity"
+                  onClick={() => {
+                    document
+                      .getElementById("process-section")
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
                 >
-                  <div
-                    data-layer="QUESTIONS"
-                    className="Questions w-36 left-0 top-[15px] absolute text-center justify-start text-white text-lg font-extrabold font-['Archivo']"
-                  >
-                    QUESTIONS
-                  </div>
-                </Link>
+                  LEARN MORE
+                </button>
               </div>
             </div>
-          </div>
+
+            {/* Mobile decorative image - bottom */}
+            <div className="lg:hidden w-full flex justify-center mt-4">
+              <Image
+                src="/grillzPage/hero/hero2.avif"
+                alt="Decorative grillz"
+                width={365}
+                height={211}
+                className="w-full max-w-sm h-auto origin-center rotate-[-7.35deg]"
+              />
+            </div>
+          </section>
+
+          {/* THE PROCESS SECTION */}
+          <section
+            id="process-section"
+            className="self-stretch py-12 lg:py-24 flex flex-col gap-2.5 px-4 lg:px-7"
+          >
+            <h2 className="text-lg lg:text-8xl text-black font-extrabold lg:font-black font-['Archivo'] lg:uppercase lg:leading-[80px]">
+              THE PROCESS
+            </h2>
+
+            {/* STEP 1 */}
+            <div className="self-stretch pb-12 lg:pb-16 relative flex flex-col gap-4">
+              <h3 className="text-4xl lg:text-7xl text-black font-black font-['Archivo'] uppercase leading-9 lg:leading-[66px] max-w-full lg:max-w-[628px]">
+                BOOK A CONSULTATION
+              </h3>
+              <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[480px]">
+                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              {/* Desktop decorative image */}
+              <Image
+                className="hidden lg:block absolute w-[24rem] h-auto right-0 top-[4.25rem]"
+                src="/grillzPage/process/step1.avif"
+                alt="Decorative grillz"
+                width={378}
+                height={191}
+              />
+              {/* Mobile decorative image */}
+              <div className="lg:hidden w-full flex justify-end mt-4">
+                <Image
+                  src="/grillzPage/process/step1.avif"
+                  alt="Decorative grillz"
+                  width={226}
+                  height={114}
+                  className="w-56 h-auto"
+                />
+              </div>
+            </div>
+
+            {/* STEP 2 */}
+            <div className="self-stretch py-12 lg:py-16 relative flex flex-col items-start lg:items-end gap-4">
+              <h3 className="text-4xl lg:text-7xl text-black font-black font-['Archivo'] uppercase leading-9 lg:leading-[66px] max-w-full lg:max-w-[47rem] text-left lg:text-right">
+                GET YOUR IMPRESSION
+              </h3>
+              <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[30rem] text-left lg:text-right">
+                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              {/* Desktop decorative image */}
+              <Image
+                className="hidden lg:block absolute w-[29rem] h-auto left-0 top-[1.625rem]"
+                src="/grillzPage/process/step2.avif"
+                alt="Decorative grillz"
+                width={458}
+                height={211}
+              />
+              {/* Mobile decorative image */}
+              <div className="lg:hidden w-full flex justify-start mt-4">
+                <Image
+                  src="/grillzPage/process/step2.avif"
+                  alt="Decorative grillz"
+                  width={260}
+                  height={120}
+                  className="w-64 h-auto"
+                />
+              </div>
+            </div>
+
+            {/* STEP 3 */}
+            <div className="self-stretch pt-12 lg:pt-16 relative flex flex-col gap-4">
+              <h3 className="text-4xl lg:text-7xl text-black font-black font-['Archivo'] uppercase leading-9 lg:leading-[66px] max-w-full">
+                COLLECT YOUR
+                <br />
+                NEW GRILLZ
+              </h3>
+              <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[480px]">
+                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              {/* Desktop decorative image */}
+              <Image
+                className="hidden lg:block absolute w-[24rem] h-auto right-0 top-[0.9375rem] origin-top-left rotate-[12.73deg]"
+                src="/grillzPage/process/step3.avif"
+                alt="Decorative grillz"
+                width={410}
+                height={163}
+              />
+              {/* Mobile decorative image */}
+              <div className="lg:hidden w-full flex justify-end">
+                <Image
+                  src="/grillzPage/process/step3.avif"
+                  alt="Decorative grillz"
+                  width={287}
+                  height={114}
+                  className="w-72 h-auto origin-center rotate-[12.73deg]"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* THE SELECTION SECTION */}
+          <section className="self-stretch pt-12 lg:pt-36 flex flex-col gap-4 px-4 lg:px-7">
+            <h2 className="text-lg lg:text-8xl text-black font-extrabold lg:font-black font-['Archivo'] lg:uppercase lg:leading-[80px]">
+              THE SELECTION
+            </h2>
+
+            {/* BANNERS */}
+            <div className="self-stretch flex flex-col gap-5">
+              {/* BANNER 1 - HEART */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/heart.avif"
+                  alt="Heart Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  HEART
+                </div>
+              </div>
+
+              {/* BANNER 2 - FANG */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/fang.avif"
+                  alt="Fang Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  FANG
+                </div>
+              </div>
+
+              {/* BANNER 3 - PLAIN */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/plain.avif"
+                  alt="Plain Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  PLAIN
+                </div>
+              </div>
+
+              {/* BANNER 4 - ORGANIC */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/organic.avif"
+                  alt="Organic Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  ORGANIC
+                </div>
+              </div>
+
+              {/* BANNER 5 - OPEN FACE */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/openface.avif"
+                  alt="Open Face Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  OPEN FACE
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* CUSTOM GRILLZ SECTION */}
+          <section className="self-stretch pt-12 lg:pt-24 pb-24 lg:pb-36 flex flex-col gap-4 px-4 lg:px-7">
+            <div className="self-stretch text-center text-black text-lg font-extrabold font-['Archivo']">
+              OR...
+            </div>
+
+            <div className="self-stretch pt-12 lg:pt-24 pb-6 flex flex-col justify-center items-center">
+              <h2 className="text-center text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px]">
+                <span className="text-black">MAKE IT </span>
+                <span className="text-black lg:text-contrast">CUSTOM</span>
+              </h2>
+            </div>
+
+            <div className="self-stretch pb-12 flex justify-center">
+              <p className="w-full max-w-full lg:max-w-[1143px] text-center text-black text-sm font-extrabold font-['Archivo']">
+                from 1 tooth to full mouth, the choice is yours.
+                <br />
+                we&apos;ll work with you and create your own bespoke GRILLZ.
+                <br />
+                <br />
+                900 DKK PER TOOTH
+                <br />
+                925 STERLING ONLY
+              </p>
+            </div>
+
+            <div className="self-stretch flex flex-col lg:flex-row justify-center items-center gap-3 lg:gap-8">
+              <a
+                href="https://vmuccc-by.myshopify.com/products/consultation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+              >
+                <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
+                  BOOK
+                </div>
+              </a>
+              <Link
+                href="/contact"
+                className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+              >
+                <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
+                  QUESTIONS
+                </div>
+              </Link>
+            </div>
+          </section>
         </div>
         <Footer />
       </div>
