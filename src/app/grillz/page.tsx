@@ -9,7 +9,7 @@ export default function GrillzPage() {
   return (
     <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col">
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col pt-14 lg:pt-0">
         {/* CONTENT - Remove horizontal padding to prevent overflow */}
         <div
           id="grillz"
@@ -62,9 +62,9 @@ export default function GrillzPage() {
                   href="https://vmuccc-by.myshopify.com/products/consultation"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+                  className="w-36 h-12 bg-black overflow-hidden hover:opacity-80 transition-opacity flex items-center justify-center"
                 >
-                  <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
+                  <div className="text-center text-white text-lg font-extrabold font-['Archivo']">
                     BOOK
                   </div>
                 </a>
@@ -298,17 +298,17 @@ export default function GrillzPage() {
                 href="https://vmuccc-by.myshopify.com/products/consultation"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+                className="w-36 h-12 bg-black overflow-hidden hover:opacity-80 transition-opacity flex items-center justify-center"
               >
-                <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
+                <div className="text-center text-white text-lg font-extrabold font-['Archivo']">
                   BOOK
                 </div>
               </a>
               <Link
-                href="/contact"
-                className="w-36 h-12 relative bg-black overflow-hidden hover:opacity-80 transition-opacity"
+                href="/faq"
+                className="w-36 h-12 bg-black overflow-hidden hover:opacity-80 transition-opacity flex items-center justify-center"
               >
-                <div className="w-36 left-0 top-[15px] absolute text-center text-white text-lg font-extrabold font-['Archivo']">
+                <div className="text-center text-white text-lg font-extrabold font-['Archivo']">
                   QUESTIONS
                 </div>
               </Link>

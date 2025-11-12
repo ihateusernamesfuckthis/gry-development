@@ -22,17 +22,17 @@ export default function ArchiveCategorySection({
   return (
     <section
       id={sectionId}
-      className="self-stretch min-h-screen inline-flex flex-col justify-start items-start gap-3"
+      className="self-stretch flex flex-col justify-start items-start gap-3 pb-12"
     >
       {/* Section Header */}
-      <div className="self-stretch pr-[5px] pt-4 bg-white inline-flex justify-start items-end gap-3.5 sticky top-0 z-10">
+      <div className="self-stretch pr-[5px] pt-4 pb-4 bg-white flex justify-start items-end gap-3.5">
         <div className="justify-start text-black text-8xl font-[900] font-['Archivo'] uppercase leading-[80px] lg:whitespace-nowrap">
           {title}
         </div>
       </div>
 
       {/* Image Grid - Mobile: 1 column, Desktop: 3 columns */}
-      <div className="self-stretch flex-1 inline-flex justify-center items-center">
+      <div className="self-stretch w-full flex justify-center items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-min">
           {images.map((image) => (
             <div

@@ -50,7 +50,15 @@ export default function Nav() {
   }, []);
 
   // Scroll-spy: use scroll + rAF to pick the section closest to a fixed top offset (stable, non-jittery)
+  // Desktop only - mobile nav is hidden
   useEffect(() => {
+    // Only run on desktop (1024px+)
+    const isDesktop = () => window.innerWidth >= 1024;
+
+    if (!isDesktop()) {
+      return; // Don't run on mobile
+    }
+
     const ids = ["grillz", "rings", "apparel", "archive"];
     let ticking = false;
 
@@ -83,17 +91,24 @@ export default function Nav() {
       });
     };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
+    // On desktop, listen to the scrollable content container
+    const contentContainer = document.getElementById('main-content');
+
+    if (contentContainer) {
+      contentContainer.addEventListener("scroll", onScroll, { passive: true });
+    }
     window.addEventListener("resize", onScroll);
 
     // run once on mount to set initial state
     onScroll();
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      if (contentContainer) {
+        contentContainer.removeEventListener("scroll", onScroll);
+      }
       window.removeEventListener("resize", onScroll);
     };
-  }, [usePathname() /* note: pass pathname from hook instead of calling here if linter complains */]);
+  }, [pathname]);
 
   const linkClass = (id: string, base = "left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo']") =>
     `${base} transition-all duration-100 ${
@@ -106,54 +121,11 @@ export default function Nav() {
 
   return (
     <>
-      {/* Hamburger button - hidden on desktop */}
-      <button
-        onClick={() => setIsMobileMenuOpen(true)}
-        className="fixed top-4 right-4 z-50 lg:hidden bg-white p-3 rounded-md shadow-lg"
-        aria-label="Open menu"
-      >
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-
-      {/* Backdrop - only visible when mobile menu open */}
-      {isMobileMenuOpen && (
-        <div
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={() => setIsMobileMenuOpen(false)}
-        />
-      )}
-
-      {/* Navigation sidebar */}
-      <nav
-        className={`
-          fixed lg:sticky
-          top-0 left-0
-          w-64 h-screen pt-4
-          bg-white
-          z-50
-          inline-flex flex-col justify-start items-start
-          transform transition-transform duration-300 ease-in-out
-          ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
-        `}
-      >
-        {/* Close button - mobile only */}
-        <button
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="absolute top-4 right-4 lg:hidden"
-          aria-label="Close menu"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
+      {/* Desktop Navigation - Sticky Sidebar */}
+      <nav className="hidden lg:flex sticky top-0 left-0 w-64 h-screen pt-4 bg-white z-50 flex-col justify-start items-start">
         {/* Logo */}
         <Link href="/" className="justify-end hover:opacity-70 transition-opacity" onClick={handleLinkClick}>
-          <div
-            className="text-5xl lg:text-8xl text-black font-[900] font-['Archivo'] uppercase leading-[60px] lg:leading-[80px]"
-          >
+          <div className="text-8xl text-black font-[900] font-['Archivo'] uppercase leading-[80px]">
             GRY
           </div>
         </Link>
@@ -254,6 +226,137 @@ export default function Nav() {
           </div>
         </div>
       </nav>
+
+      {/* Mobile Navigation - Full Screen Overlay */}
+      <div className="lg:hidden">
+        {/* Top Bar with Logo and Hamburger - Always visible */}
+        <div className="fixed top-0 left-0 right-0 h-14 bg-white z-50 flex justify-between items-center px-5">
+          <Link href="/" className="justify-end" onClick={handleLinkClick}>
+            <div className="text-4xl text-black font-[900] font-['Archivo'] uppercase leading-9">
+              GRY
+            </div>
+          </Link>
+
+          {!isMobileMenuOpen && (
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="w-7 h-5 flex flex-col justify-center items-center gap-1"
+              aria-label="Open menu"
+            >
+              <div className="w-7 h-1 bg-black" />
+              <div className="w-7 h-1 bg-black" />
+              <div className="w-7 h-1 bg-black" />
+            </button>
+          )}
+
+          {isMobileMenuOpen && (
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-7 h-7 relative"
+              aria-label="Close menu"
+            >
+              <div className="absolute w-7 h-1 bg-black top-1/2 left-0 origin-center rotate-45" />
+              <div className="absolute w-7 h-1 bg-black top-1/2 left-0 origin-center -rotate-45" />
+            </button>
+          )}
+        </div>
+
+        {/* Full Screen Menu Overlay */}
+        <div
+          className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="w-28 pl-5 pt-48 flex flex-col justify-start items-start gap-1">
+            {/* Main Menu Items */}
+            <Link href="/grillz" className="w-20 h-5 relative" onClick={handleLinkClick}>
+              <div className="left-0 top-0 justify-start text-black text-lg font-[800] font-['Archivo']">
+                GRILLZ
+              </div>
+            </Link>
+
+            <Link
+              href="/#rings"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("rings")?.scrollIntoView({ behavior: "smooth" });
+                }
+                handleLinkClick();
+              }}
+              className="w-16 h-5 relative"
+            >
+              <div className="left-0 top-0 justify-start text-black text-lg font-[800] font-['Archivo']">
+                RINGS
+              </div>
+            </Link>
+
+            <Link
+              href="/#apparel"
+              onClick={(e) => {
+                if (pathname === "/") {
+                  e.preventDefault();
+                  document.getElementById("apparel")?.scrollIntoView({ behavior: "smooth" });
+                }
+                handleLinkClick();
+              }}
+              className="w-16 h-5 relative"
+            >
+              <div className="left-0 top-0 justify-start text-black text-lg font-[800] font-['Archivo']">
+                APPAREL
+              </div>
+            </Link>
+
+            <Link href="/archive" className="w-24 h-5 relative" onClick={handleLinkClick}>
+              <div className="left-0 top-0 justify-start text-black text-lg font-[800] font-['Archivo']">
+                ARCHIVE
+              </div>
+            </Link>
+
+            <Link href="/cart" className="w-14 h-5 relative" onClick={handleLinkClick}>
+              <div className={`left-0 top-0 justify-start text-lg font-[800] font-['Archivo'] ${hasCartItems ? "text-contrast" : "text-black"}`}>
+                CART
+              </div>
+            </Link>
+
+            {/* Socials */}
+            <div className="pt-12 flex flex-col justify-end items-start gap-2">
+              <Link href="https://tiktok.com" target="_blank" className="w-14 h-3.5 relative" onClick={handleLinkClick}>
+                <div className="left-0 top-0 justify-start text-black text-sm font-[800] font-['Archivo']">
+                  TIKTOK
+                </div>
+              </Link>
+
+              <Link href="https://instagram.com" target="_blank" className="w-24 h-3.5 relative" onClick={handleLinkClick}>
+                <div className="left-0 top-0 justify-start text-black text-sm font-[800] font-['Archivo']">
+                  INSTAGRAM
+                </div>
+              </Link>
+            </div>
+
+            {/* Boring Stuff */}
+            <div className="pt-96 flex flex-col justify-end items-start gap-2">
+              <Link href="/contact" className="w-16 h-3.5 relative" onClick={handleLinkClick}>
+                <div className="left-0 top-0 justify-start text-black text-sm font-[800] font-['Archivo']">
+                  CONTACT
+                </div>
+              </Link>
+
+              <Link href="/faq" className="w-7 h-3.5 relative" onClick={handleLinkClick}>
+                <div className="left-0 top-0 justify-start text-black text-sm font-[800] font-['Archivo']">
+                  FAQ
+                </div>
+              </Link>
+
+              <Link href="/terms" className="w-44 h-3.5 relative" onClick={handleLinkClick}>
+                <div className="left-0 top-0 justify-start text-black text-sm font-[800] font-['Archivo']">
+                  TERMS AND CONDITIONS
+                </div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

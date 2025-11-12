@@ -70,7 +70,7 @@ export default function ArchivePage() {
   return (
     <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12">
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12 pt-14 lg:pt-0">
         <ArchiveCategorySection
           title="FIND YOUR SMILE"
           images={archiveData.findYourSmile.images}

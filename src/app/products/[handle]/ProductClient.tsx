@@ -80,9 +80,9 @@ export default function ProductClient({ product }: ProductClientProps) {
   return (
     <>
       {/* MOBILE LAYOUT (< 1024px) */}
-      <div className="lg:hidden flex flex-col h-screen">
-        {/* Top Section: Image Carousel */}
-        <div className="h-[65vh] relative">
+      <div className="lg:hidden flex flex-col h-[calc(100vh-3.5rem)]">
+        {/* Top Section: Image Carousel - 60% of available height */}
+        <div className="h-[60%] relative flex-shrink-0">
           {/* Horizontal scrolling images */}
           <div
             className="flex overflow-x-auto snap-x snap-mandatory h-full scrollbar-hide"
@@ -122,41 +122,41 @@ export default function ProductClient({ product }: ProductClientProps) {
           </div>
         </div>
 
-        {/* Bottom Section: Sticky Product Details */}
-        <div className="fixed bottom-0 left-0 right-0 bg-white px-4 py-6 max-h-[40vh] overflow-y-auto">
+        {/* Bottom Section: Product Details - 40% of available height */}
+        <div className="h-[40%] bg-white px-4 py-4 flex flex-col flex-shrink-0">
           {/* Product Title & Price */}
-          <div className="flex justify-between items-start mb-4">
-            <h1 className="text-2xl font-black font-['Archivo'] uppercase">
+          <div className="flex justify-between items-start mb-3">
+            <h1 className="text-xl font-black font-['Archivo'] uppercase leading-tight">
               {product.title}
             </h1>
-            <div className="text-lg font-extrabold font-['Archivo'] whitespace-nowrap ml-4">
+            <div className="text-base font-extrabold font-['Archivo'] whitespace-nowrap ml-4">
               {firstVariant?.price && formatPrice(firstVariant.price.amount, firstVariant.price.currencyCode)}
             </div>
           </div>
 
           {/* Description */}
-          <div className="text-sm font-extrabold font-['Archivo'] mb-4 space-y-1">
+          <div className="text-xs font-extrabold font-['Archivo'] mb-3 space-y-0.5">
             <div>925 sterling silver</div>
             <div>made by hand, made to order</div>
           </div>
 
           {/* Error message */}
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded">
-              <p className="text-red-600 text-sm font-['Archivo']">{error}</p>
+            <div className="mb-2 p-2 bg-red-50 border border-red-200 rounded">
+              <p className="text-red-600 text-xs font-['Archivo']">{error}</p>
             </div>
           )}
 
           {/* Size selector */}
-          <div className="mb-4">
-            <div className="text-sm font-extrabold font-['Archivo'] mb-2">SIZE</div>
+          <div className="mb-3">
+            <div className="text-xs font-extrabold font-['Archivo'] mb-2">SIZE</div>
             <div className="flex flex-wrap gap-2">
               {variants.map((variant) => (
                 <button
                   key={variant.id}
                   onClick={() => setSelectedVariant(variant)}
                   disabled={!variant.availableForSale}
-                  className={`size-10 inline-flex flex-col justify-center items-center transition-colors ${
+                  className={`size-9 inline-flex flex-col justify-center items-center transition-colors ${
                     selectedVariant?.id === variant.id
                       ? "bg-black"
                       : variant.availableForSale
@@ -164,7 +164,7 @@ export default function ProductClient({ product }: ProductClientProps) {
                       : "bg-black/10 cursor-not-allowed"
                   }`}
                 >
-                  <div className="text-white text-base font-extrabold font-['Archivo']">
+                  <div className="text-white text-sm font-extrabold font-['Archivo']">
                     {variant.title}
                   </div>
                 </button>
@@ -172,12 +172,12 @@ export default function ProductClient({ product }: ProductClientProps) {
             </div>
           </div>
 
-          {/* Cart buttons */}
-          <div className="flex flex-col gap-3">
+          {/* Cart buttons - flex-grow to take remaining space */}
+          <div className="flex flex-col gap-2 mt-auto">
             <button
               onClick={handleAddToCart}
               disabled={!selectedVariant || isAddingToCart}
-              className={`w-full py-4 text-center text-base font-extrabold font-['Archivo'] transition-colors ${
+              className={`w-full py-3 text-center text-sm font-extrabold font-['Archivo'] transition-colors ${
                 !selectedVariant || isAddingToCart
                   ? "bg-black/20 text-black/30 cursor-not-allowed"
                   : addedToCart
@@ -189,7 +189,7 @@ export default function ProductClient({ product }: ProductClientProps) {
             </button>
             <Link
               href="/cart"
-              className="w-full py-4 text-center bg-white border-2 border-black text-black text-base font-extrabold font-['Archivo'] hover:bg-black hover:text-white transition-colors"
+              className="w-full py-3 text-center bg-white border-2 border-black text-black text-sm font-extrabold font-['Archivo'] hover:bg-black hover:text-white transition-colors"
             >
               GO TO CART
             </Link>

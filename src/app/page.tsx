@@ -15,7 +15,7 @@ export default function Home() {
       {/* Main content - starts after the landing hero */}
       <div className="relative lg:flex lg:h-screen z-10 bg-white">
         <Nav />
-        <div id="main-content" className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12">
+        <div id="main-content" className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12 pt-14 lg:pt-0">
           <GrillzSection />
           <RingSection />
           <TShirtSection

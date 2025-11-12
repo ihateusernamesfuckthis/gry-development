@@ -1,6 +1,12 @@
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
+
 export default function TermsAndConditions() {
   return (
-    <div className="Main size- inline-flex flex-col justify-start items-start gap-6">
+    <main className="lg:flex lg:h-screen">
+      <Nav />
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12 pt-14 lg:pt-0">
+        <div className="Main size- inline-flex flex-col justify-start items-start gap-6 px-4 lg:px-0">
       <div className="TCHeader size- pr-[5px] pt-4 bg-white inline-flex justify-start items-center gap-3.5">
         <div className="TermsConditions justify-start text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px]">
           TERMS & CONDITIONS
@@ -177,6 +183,9 @@ export default function TermsAndConditions() {
           </span>
         </div>
       </div>
-    </div>
+        </div>
+        <Footer />
+      </div>
+    </main>
   );
 }
