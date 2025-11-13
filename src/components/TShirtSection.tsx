@@ -22,9 +22,9 @@ export default function TShirtSection({ name, material, price, handle }: TShirtS
 
       {/* T-Shirt Display - Mobile: Stacked with gap-8, Desktop: Side by side */}
       <div className="self-stretch inline-flex justify-start items-start gap-8">
-        <Link href={`/products/${handle}`} className="flex-1 flex flex-col lg:h-full justify-center items-center lg:items-end gap-8">
+        <Link href={`/products/${handle}`} className="flex-1 flex flex-col lg:h-full justify-center items-center gap-8">
           {/* Image with hover effect - Responsive container */}
-          <div className="w-full h-96 lg:h-auto lg:flex-1 relative group cursor-pointer">
+          <div className="w-full h-94 lg:h-auto lg:flex-1 lg:max-w-4xl relative group cursor-pointer">
             <Image
               src={`/tshirtsection/tshirt1.avif`}
               alt={name}
