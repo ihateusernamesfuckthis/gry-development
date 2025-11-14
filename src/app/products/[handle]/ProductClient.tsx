@@ -137,7 +137,8 @@ export default function ProductClient({ product }: ProductClientProps) {
           {/* Description */}
           <div className="text-xs font-extrabold font-['Archivo'] mb-3 space-y-0.5">
             <div>925 sterling silver</div>
-            <div>made by hand, made to order</div>
+            <div>Made by hand.</div>
+            <div>Made to order.</div>
           </div>
 
           {/* Error message */}
@@ -230,10 +231,14 @@ export default function ProductClient({ product }: ProductClientProps) {
           <div className="SterlingSilver self-stretch h-4 justify-end text-black text-sm font-extrabold font-['Archivo']">
             925 sterling silver
           </div>
-          <div className="MadeByHandMadeToOrder self-stretch h-4 justify-end text-black text-sm font-extrabold font-['Archivo']">
-            made by hand, made to order
+          <div className="MadeByHandMadeToOrder self-stretch pt-1 h-4 justify-end text-black text-sm font-extrabold font-['Archivo']">
+            Made by hand.
+            <br></br>
+            Made to order.
+            <br></br>
+            True to size based on standard millimeter ring sizing.
           </div>
-          <div className="000Dkk self-stretch h-12 justify-end text-black text-lg font-extrabold font-['Archivo']">
+          <div className="000Dkk self-stretch h-12 pt-12 justify-end text-black text-lg font-extrabold font-['Archivo']">
             {firstVariant?.price && formatPrice(firstVariant.price.amount, firstVariant.price.currencyCode)}
           </div>
 

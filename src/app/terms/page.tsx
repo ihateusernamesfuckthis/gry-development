@@ -5,22 +5,22 @@ export default function TermsAndConditions() {
   return (
     <main className="lg:flex lg:h-screen">
       <Nav />
-      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col gap-12 pt-14 lg:pt-0">
-        <div className="Main size- inline-flex flex-col justify-start items-start gap-6 px-4 lg:px-0">
-      <div className="TCHeader size- pr-[5px] pt-4 bg-white inline-flex justify-start items-center gap-3.5">
-        <div className="TermsConditions justify-start text-black text-8xl font-black font-['Archivo'] uppercase leading-[80px]">
+      <div className="w-full lg:flex-1 lg:overflow-y-auto flex flex-col pt-14 lg:pt-0">
+        <div className="flex flex-col justify-start items-start gap-6 px-4 lg:px-7 pb-12">
+      <div className="self-stretch pt-4 bg-white flex justify-start items-center gap-3.5">
+        <div className="justify-start text-black text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px]">
           TERMS & CONDITIONS
         </div>
       </div>
-      <div className="ItemDesc size- flex flex-col justify-start items-start">
-        <div className="w-[772px] justify-end text-black text-lg font-extrabold font-['Archivo']">
+      <div className="self-stretch flex flex-col justify-start items-start gap-4">
+        <div className="w-full justify-end text-black text-base lg:text-lg font-extrabold font-['Archivo']">
           Welcome to GRY GRILLZ (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;). These Terms and
           Conditions (&ldquo;Terms&rdquo;) govern your access to and use of our website,
           grygrillz.com, and any purchases made through it. By using our site or
           placing an order, you agree to be bound by these Terms. If you do not
           agree, please do not use our site.
         </div>
-        <div className="w-[535px] justify-end">
+        <div className="w-full max-w-[535px] justify-end">
           <br />
           <br />
           <span className="text-black text-sm font-extrabold font-['Archivo']">

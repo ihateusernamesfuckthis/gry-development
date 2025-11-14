@@ -54,8 +54,7 @@ export default function GrillzPage() {
             {/* Hero CTA */}
             <div className="w-full lg:max-w-[56rem] lg:absolute lg:left-0 lg:bottom-[2rem] flex flex-col gap-4">
               <p className="w-full lg:max-w-[30rem] text-black text-sm font-extrabold font-['Archivo']">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Book your custom grillz session
               </p>
               <div className="flex flex-row items-center gap-8">
                 <a
@@ -98,7 +97,7 @@ export default function GrillzPage() {
             id="process-section"
             className="self-stretch py-12 lg:py-24 flex flex-col gap-2.5 px-4 lg:px-7"
           >
-            <h2 className="text-lg lg:text-8xl text-black font-extrabold lg:font-black font-['Archivo'] lg:uppercase lg:leading-[80px]">
+            <h2 className="text-lg lg:text-8xl pb-6 text-black font-extrabold lg:font-black font-['Archivo'] lg:uppercase lg:leading-[80px]">
               THE PROCESS
             </h2>
 
@@ -108,8 +107,10 @@ export default function GrillzPage() {
                 BOOK A CONSULTATION
               </h3>
               <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[480px]">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Book your appointment directly here on the site.
+                You can choose from our most popular styles - Plain, Open, Heart, Organic, or Fang - or book a session for a fully custom design. 
+                Custom pieces are discussed and priced during your consultation to ensure the perfect fit and vision.
+
               </p>
               {/* Desktop decorative image */}
               <Image
@@ -137,8 +138,9 @@ export default function GrillzPage() {
                 GET YOUR IMPRESSION
               </h3>
               <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[30rem] text-left lg:text-right">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                We take a precise dental impression to ensure a perfect, comfortable fit.
+                This mold becomes the foundation for crafting your unique piece, and any special design details are finalized during this step.
+
               </p>
               {/* Desktop decorative image */}
               <Image
@@ -168,8 +170,9 @@ export default function GrillzPage() {
                 NEW GRILLZ
               </h3>
               <p className="text-black text-sm font-extrabold font-['Archivo'] max-w-full lg:max-w-[480px]">
-                lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Your custom grillz are handcrafted and polished to perfection.
+                Production can take up to 3 weeks before your piece is ready.
+                Once finished, you can pick it up in the same studio where your consultation took place.
               </p>
               {/* Desktop decorative image */}
               <Image
@@ -200,33 +203,21 @@ export default function GrillzPage() {
 
             {/* BANNERS */}
             <div className="self-stretch flex flex-col gap-5">
-              {/* BANNER 1 - HEART */}
+
+              {/* OPEN FACE */}
               <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
                 <Image
-                  src="/grillzPage/grillzBanner/heart.avif"
-                  alt="Heart Grillz"
+                  src="/grillzPage/grillzBanner/openface.avif"
+                  alt="Open Face Grillz"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
-                  HEART
+                  OPEN FACE
                 </div>
               </div>
 
-              {/* BANNER 2 - FANG */}
-              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
-                <Image
-                  src="/grillzPage/grillzBanner/fang.avif"
-                  alt="Fang Grillz"
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
-                  FANG
-                </div>
-              </div>
-
-              {/* BANNER 3 - PLAIN */}
+              {/* PLAIN */}
               <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
                 <Image
                   src="/grillzPage/grillzBanner/plain.avif"
@@ -239,7 +230,20 @@ export default function GrillzPage() {
                 </div>
               </div>
 
-              {/* BANNER 4 - ORGANIC */}
+              {/* HEART */}
+              <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
+                <Image
+                  src="/grillzPage/grillzBanner/heart.avif"
+                  alt="Heart Grillz"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
+                  HEART
+                </div>
+              </div>
+
+              {/* ORGANIC */}
               <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
                 <Image
                   src="/grillzPage/grillzBanner/organic.avif"
@@ -252,16 +256,16 @@ export default function GrillzPage() {
                 </div>
               </div>
 
-              {/* BANNER 5 - OPEN FACE */}
+              {/* FANG */}
               <div className="w-full h-96 relative bg-gray-800 overflow-hidden">
                 <Image
-                  src="/grillzPage/grillzBanner/openface.avif"
-                  alt="Open Face Grillz"
+                  src="/grillzPage/grillzBanner/fang.avif"
+                  alt="Fang Grillz"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute left-4 lg:left-[40px] bottom-12 lg:bottom-[120px] text-white text-4xl lg:text-8xl font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] z-10">
-                  OPEN FACE
+                  FANG
                 </div>
               </div>
             </div>
@@ -282,14 +286,14 @@ export default function GrillzPage() {
 
             <div className="self-stretch pb-12 flex justify-center">
               <p className="w-full max-w-full lg:max-w-[1143px] text-center text-black text-sm font-extrabold font-['Archivo']">
-                from 1 tooth to full mouth, the choice is yours.
+                One tooth. Full set. You decide.
                 <br />
-                we&apos;ll work with you and create your own bespoke GRILLZ.
+                Custom grillz made to match your vision.
                 <br />
                 <br />
-                900 DKK PER TOOTH
+                950 DKK PER TOOTH
                 <br />
-                925 STERLING ONLY
+                Crafted in Sterling Silver, 14K gold, or 18K gold.
               </p>
             </div>
 
