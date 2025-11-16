@@ -275,6 +275,7 @@ export default function GrillzPage() {
           <section className="self-stretch pt-12 lg:pt-24 pb-24 lg:pb-36 flex flex-col gap-4 px-4 lg:px-7">
             <div className="self-stretch text-center text-black text-lg font-extrabold font-['Archivo']">
               OR...
+              
             </div>
 
             <div className="self-stretch pt-12 lg:pt-24 pb-6 flex flex-col justify-center items-center">
@@ -294,6 +295,19 @@ export default function GrillzPage() {
                 950 DKK PER TOOTH
                 <br />
                 Crafted in Sterling Silver, 14K gold, or 18K gold.
+                <br />
+                <br />
+                Open face	950 kr Silver / 1800 kr Gold
+                <br />
+                Plain		950 kr Silver / 1800 kr Gold
+                <br />
+                Heart		1200 kr Silver / 2000 kr Gold
+                <br />
+                Organic	1250 kr Silver / 2100 kr Gold
+                <br />
+                Fang		1400 kr Silver / 2300 kr Gold
+              <br />
+              <br />
               </p>
             </div>
 
