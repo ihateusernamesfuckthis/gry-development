@@ -287,14 +287,6 @@ export default function GrillzPage() {
 
             <div className="self-stretch pb-12 flex justify-center">
               <p className="w-full max-w-full lg:max-w-[1143px] text-center text-black text-sm font-extrabold font-['Archivo']">
-                One tooth. Full set. You decide.
-                <br />
-                Custom grillz made to match your vision.
-                <br />
-                <br />
-                950 DKK PER TOOTH
-                <br />
-                Crafted in Sterling Silver, 14K gold, or 18K gold.
                 <br />
                 <br />
                 Open face	950 kr Silver / 1800 kr Gold
