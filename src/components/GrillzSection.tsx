@@ -62,8 +62,8 @@ export default function GrillzSection() {
             />
           </Link>
 
-          {/* Image 4 - Bottom Right with 180° rotation */}
-          <Link href="/grillz" className="absolute w-[14rem] h-auto left-[25.6875rem] top-[32.5625rem] origin-top-left rotate-180 hover:scale-105 transition-transform">
+          {/* Image 4 - Bottom Right */}
+          <Link href="/grillz" className="absolute w-[14rem] h-auto left-[11.6875rem] top-[32.5625rem] hover:scale-105 transition-transform">
             <Image
               src="/grillzsection/image4.avif"
               alt="Grillz Design 4"
@@ -141,14 +141,14 @@ export default function GrillzSection() {
             />
           </Link>
 
-          {/* Image 4 - Bottom Right with 180° rotation */}
-          <Link href="/grillz" className="absolute w-[28rem] xl:w-[30rem] 2xl:w-[31.9375rem] h-auto left-[68rem] xl:left-[75.1875rem] top-[50.9375rem] origin-top-left rotate-180 hover:scale-105 transition-transform">
+          {/* Image 4 - Bottom Right */}
+          <Link href="/grillz" className="absolute w-[28rem] xl:w-[30rem] 2xl:w-[31.9375rem] h-auto left-[40rem] xl:left-[45.1875rem] top-[31rem] xl:top-[31rem] hover:scale-105 transition-transform">
             <Image
               src="/grillzsection/image4.avif"
               alt="Grillz Design 4"
               width={511}
               height={319}
-              className="w-full h-auto"
+              className="w-full h-auto scale-x-[-1]"
             />
           </Link>
         </div>

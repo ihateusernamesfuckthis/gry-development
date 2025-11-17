@@ -46,7 +46,7 @@ export default function TShirtSection({ name, material, price, handle }: TShirtS
                 {material}
               </div>
               <div className="self-stretch h-6 justify-end text-black text-base font-normal font-['Archivo']">
-                {price}
+                250 dkk
               </div>
             </div>
           </div>

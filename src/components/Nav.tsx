@@ -202,7 +202,7 @@ export default function Nav() {
             <Link href="/cart" className="w-14 h-5 relative" onClick={handleLinkClick}>
               <div
                 className={`left-0 top-0 absolute justify-start text-lg font-[800] font-['Archivo'] transition-all duration-300 ${
-                  hasCartItems ? "text-contrast scale-110" : "text-black scale-100"
+                  hasCartItems ? "text-contrast scale-100" : "text-black scale-100"
                 }`}
               >
                 CART

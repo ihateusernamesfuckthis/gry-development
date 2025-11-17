@@ -22,6 +22,7 @@ export interface Product {
   title: string;
   handle: string;
   description?: string;
+  descriptionHtml?: string;
   images?: {
     edges: Array<{
       node: Image;

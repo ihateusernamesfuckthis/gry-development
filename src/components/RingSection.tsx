@@ -20,21 +20,21 @@ export default function RingSection() {
         <RingCard
           name="RING #1"
           material="925 Sterling Silver"
-          price="1.100 DKK"
+          price="1.400 DKK"
           imageNumber={1}
           handle="ring-1"
         />
         <RingCard
           name="RING #2"
           material="925 Sterling Silver"
-          price="1.100 DKK"
+          price="1.400 DKK"
           imageNumber={2}
           handle="ring-2"
         />
         <RingCard
           name="RING #3"
           material="925 Sterling Silver"
-          price="1.100 DKK"
+          price="1.200 DKK"
           imageNumber={3}
           handle="ring-3"
         />
