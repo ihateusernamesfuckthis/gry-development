@@ -16,7 +16,7 @@ export default function TShirtSection({ name, material, price, handle }: TShirtS
       <div className="self-stretch pr-[5px] pt-4 bg-white flex flex-col lg:inline-flex lg:flex-row justify-start items-start lg:items-end gap-1 lg:gap-3.5 sticky top-0 z-10">
         {/* Title - Responsive text size */}
         <div className="justify-start text-4xl lg:text-8xl text-black font-black font-['Archivo'] uppercase leading-9 lg:leading-[80px] lg:whitespace-nowrap">
-          TIDDY BEAR
+          TANK TOP
         </div>
       </div>
 
